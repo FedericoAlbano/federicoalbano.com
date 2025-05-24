@@ -1,0 +1,9 @@
+# Abilita il rewrite engine
+RewriteEngine On
+
+# Se la richiesta non è un file o directory reale
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Riscrive /chi-sono in /chi-sono/index.html
+RewriteRule ^(.+?)/?$ $1/index.html [L]
