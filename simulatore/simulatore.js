@@ -92,47 +92,11 @@ function calcolaRata() {
 
     const rata = importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)));
 
-    const speseAccessorie = importo * 0.04 + 1200;
-    const costoTotale = rata * numeroRate + speseAccessorie;
-
-    // Formula TAEG approssimativa ma più realistica
-    const taeg = calcolaTAEG_IRR(importo, rata, numeroRate);
-
-
+    // Visualizzo solo la rata, niente TAEG
     document.getElementById("risultato").innerHTML = `
       <h4>Rata mensile: <span id="rata">€${rata.toFixed(2)}</span></h4>
-      <h4>TAEG: <span id="taeg">${taeg.toFixed(2)} %</span></h4>
     `;
   }, 1000);
 }
-function calcolaTAEG_IRR(importoErogato, rataMensile, numeroRate) {
-  const precisione = 1e-7;
-  let taeg = 0.05; // Valore iniziale (5%)
-  let iterazioni = 0;
-  const maxIterazioni = 100;
-
-  while (iterazioni < maxIterazioni) {
-    let f = -importoErogato;
-    let df = 0;
-
-    for (let i = 1; i <= numeroRate; i++) {
-      const denominatore = Math.pow(1 + taeg, i);
-      f += rataMensile / denominatore;
-      df -= i * rataMensile / (denominatore * (1 + taeg));
-    }
-
-    const nuovoTaeg = taeg - f / df;
-    if (Math.abs(nuovoTaeg - taeg) < precisione) break;
-
-    taeg = nuovoTaeg;
-    iterazioni++;
-  }
-
-  return taeg * 12 * 100; // Annualizzato in percentuale
-}
-document.getElementById("risultato").innerHTML = `
-  <h4>Rata mensile: <span id="rata">€${rata.toFixed(2)}</span></h4>
-  <h4>TAEG: <span id="taeg">${taeg.toFixed(2)} %</span></h4>
-`;
 
 aggiornaLimiti();
