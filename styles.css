@@ -1,0 +1,210 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0b1f3a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #07172d;
+    padding: 2em 1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+    color: #ccc;
+    margin-top: 0.5em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    background-color: #001b34;
+    margin: 0;
+    padding: 1em;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s ease, padding-bottom 0.3s ease; /* Aggiunto la transizione */
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #66ccff;
+    text-decoration: underline;
+    padding-bottom: 5px; /* Aggiungi spazio sotto */
+    transform: translateY(-2px); /* Effetto di sollevamento */
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #66ccff;
+    bottom: 0;
+    left: 50%;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+main {
+    padding: 2em;
+}
+
+.simulatore {
+    background-color: #122f56;
+    padding: 2.5em 2em;
+    border-radius: 16px;
+    max-width: 650px;
+    margin: 2em auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.simulatore h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1.5em;
+    color: #ffffff;
+}
+
+.simulatore label {
+    display: block;
+    margin-top: 1.5em;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.simulatore input,
+.simulatore select {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 0.4em;
+    border-radius: 8px;
+    border: none;
+    font-size: 1em;
+    background-color: #e9f0fa;
+    color: #000;
+}
+
+.simulatore input[type=range] {
+    background-color: transparent;
+    margin-top: 0.8em;
+}
+
+.simulatore .range-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.simulatore .range-wrapper input[type=number] {
+    width: 120px;
+    padding: 0.5em;
+}
+
+.simulatore button {
+    margin-top: 2em;
+    width: 100%;
+    padding: 1em;
+    background-color: #0057a8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.simulatore button:hover {
+    background-color: #0073e6;
+}
+
+#risultato {
+    margin-top: 2.5em;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #66ccff;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5em;
+    background-color: #07172d;
+    margin-top: 4em;
+    color: #ccc;
+    font-size: 0.9em;
+}
+.range-wrapper input[type="range"] {
+    accent-color: #007bff;
+    transition: all 0.3s ease;
+  }
+  
+  .range-wrapper input[type="range"]:active {
+    transform: scale(1.05);
+  }
+  
+  .range-wrapper input[type="number"] {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .range-wrapper input[type="number"]:focus {
+    box-shadow: 0 0 8px rgba(0,123,255,0.6);
+    outline: none;
+    transform: scale(1.03);
+  }
+  .field-anim {
+    animation: pop 0.2s ease;
+  }
+  
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+  
+  .dot-flashing {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: #007bff;
+    animation: dotFlashing 1s infinite linear alternate;
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes dotFlashing {
+    0% {
+      background-color: #007bff;
+    }
+    50%,
+    100% {
+      background-color: #cce5ff;
+    }
+  }
+  
