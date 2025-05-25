@@ -98,7 +98,7 @@ header p {
     text-align: center;
     font-size: 1.5em;
     font-weight: 600;
-    color: #66ccff;
+    color: #0b2a2f;
 }
 
 footer {
@@ -126,7 +126,7 @@ footer {
   }
   
   .range-wrapper input[type="number"]:focus {
-    box-shadow: 0 0 8px rgba(0,123,255,0.6);
+    box-shadow: 0 0 8px rgba(15, 54, 70, 0.6);
     outline: none;
     transform: scale(1.03);
   }
