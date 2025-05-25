@@ -207,4 +207,19 @@ footer {
       background-color: #cce5ff;
     }
   }
+  .quiz-btn {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: none;
+    background-color: #0c3940;
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  .quiz-btn:hover {
+    background-color: #12606a;
+  }
   

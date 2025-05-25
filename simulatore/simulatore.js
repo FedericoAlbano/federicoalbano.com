@@ -100,3 +100,40 @@ function calcolaRata() {
 }
 
 aggiornaLimiti();
+
+let selectedGoal = "";
+
+function openQuiz() {
+  document.getElementById("quiz-popup").style.display = "block";
+}
+
+function closeQuiz() {
+  document.getElementById("quiz-popup").style.display = "none";
+}
+
+function nextStep(step, goal) {
+  selectedGoal = goal;
+  document.getElementById("quiz-step-1").style.display = "none";
+  document.getElementById("quiz-step-2").style.display = "block";
+}
+
+function showResult(incomeStatus) {
+  let resultText = "";
+  if (selectedGoal === "Casa") {
+    resultText = incomeStatus === "stipendio" 
+      ? "Potresti richiedere un mutuo prima casa." 
+      : "Ti consiglio di parlare con un consulente per valutare soluzioni agevolate.";
+  } else if (selectedGoal === "Auto") {
+    resultText = incomeStatus === "stipendio" 
+      ? "Un prestito personale potrebbe fare al caso tuo." 
+      : "Potresti valutare un coobbligato o garanzie alternative.";
+  } else if (selectedGoal === "Consolidamento") {
+    resultText = incomeStatus === "stipendio" 
+      ? "Il consolidamento debiti è la soluzione giusta!" 
+      : "Parliamone: ci sono soluzioni anche per chi ha difficoltà reddituali.";
+  }
+  document.getElementById("quiz-step-2").style.display = "none";
+  document.getElementById("quiz-result").style.display = "block";
+  document.getElementById("quiz-result-text").textContent = resultText;
+}
+

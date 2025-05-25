@@ -230,5 +230,78 @@ footer {
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Quiz Pop-up -->
+<div id="quiz-popup" style="position: fixed; bottom: 20px; right: 20px; background: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 10px; width: 300px; max-width: 90%; z-index: 9999; padding: 20px; display: none;">
+  <button onclick="closeQuiz()" style="position:absolute; top:8px; right:12px; border:none; background:none; font-size:18px;">×</button>
+  <div id="quiz-step-1">
+    <h5>Che tipo di obiettivo hai?</h5>
+    <button class="quiz-btn" onclick="nextStep(2, 'Casa')">Comprare casa</button>
+    <button class="quiz-btn" onclick="nextStep(2, 'Auto')">Comprare auto</button>
+    <button class="quiz-btn" onclick="nextStep(2, 'Consolidamento')">Riunire i debiti</button>
+  </div>
+  <div id="quiz-step-2" style="display:none;">
+    <h5>Hai già uno stipendio fisso?</h5>
+    <button class="quiz-btn" onclick="showResult('stipendio')">Sì</button>
+    <button class="quiz-btn" onclick="showResult('no-stipendio')">No</button>
+  </div>
+  <div id="quiz-result" style="display:none;">
+    <h5>Risultato:</h5>
+    <p id="quiz-result-text"></p>
+    <a href="/contatti/" class="btn btn-primary btn-sm mt-2">Richiedi Consulenza</a>
+  </div>
+</div>
+
+<!-- Trigger Button -->
+<button onclick="openQuiz()" style="position: fixed; bottom: 20px; left: 20px; z-index: 9998; background-color: #0c3940; color: white; border: none; border-radius: 30px; padding: 10px 20px; font-weight: bold;">Scopri il prestito giusto</button>
+<script>
+  function openQuiz() {
+    // Mostra il popup
+    document.getElementById("quiz-popup").style.display = "block";
+    // Mostra solo il primo step
+    document.getElementById("quiz-step-1").style.display = "block";
+    document.getElementById("quiz-step-2").style.display = "none";
+    document.getElementById("quiz-result").style.display = "none";
+  }
+
+  function closeQuiz() {
+    document.getElementById("quiz-popup").style.display = "none";
+  }
+
+  function nextStep(step, answer) {
+    // Nascondi tutti gli step e risultato
+    document.getElementById("quiz-step-1").style.display = "none";
+    document.getElementById("quiz-step-2").style.display = "none";
+    document.getElementById("quiz-result").style.display = "none";
+
+    // Mostra lo step desiderato
+    document.getElementById("quiz-step-" + step).style.display = "block";
+
+    // (Opzionale) puoi salvare la risposta o usarla per il risultato
+    // Per esempio: console.log("Risposta step precedente:", answer);
+  }
+
+  function showResult(type) {
+    // Nascondi tutti gli step
+    document.getElementById("quiz-step-1").style.display = "none";
+    document.getElementById("quiz-step-2").style.display = "none";
+
+    // Mostra il risultato
+    document.getElementById("quiz-result").style.display = "block";
+
+    // Cambia il testo del risultato in base alla risposta
+    let resultText = "";
+    if(type === "stipendio") {
+      resultText = "Puoi richiedere un prestito con condizioni vantaggiose grazie al tuo stipendio fisso.";
+    } else if(type === "no-stipendio") {
+      resultText = "Potresti aver bisogno di ulteriori garanzie per ottenere un prestito.";
+    } else {
+      resultText = "Grazie per aver completato il quiz.";
+    }
+
+    document.getElementById("quiz-result-text").textContent = resultText;
+  }
+</script>
+
 </body>
 </html>
