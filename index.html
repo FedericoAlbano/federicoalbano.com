@@ -40,62 +40,97 @@
   <link rel="icon" type="image/x-icon" href="/img/logo.ico" />
   <link rel="shortcut icon" href="/img/logo.ico" type="image/x-icon" />
 
-  <link rel="stylesheet" href="/styles.css" />
+
 
   <style>
     body {
-      font-family: "Inter", sans-serif;
-      background-color: #f8f9fa;
-    }
-    header {
-      background: #002244;
-      color: white;
-      padding: 40px 0;
-      text-align: center;
-    }
-    .hero {
-      background: url("/img/famiglia.jpg") center/cover no-repeat;
-      color: white;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-    }
-    .hero h1 {
-      font-size: 3rem;
-    }
-    .navbar {
-      background-color: #0c3940;
-    }
-    .navbar-nav .nav-link {
-      color: white !important;
-    }
-    .section-dark {
-      background-color: #001933;
-      color: white;
-    }
-    .section-light {
-      background-color: #f8f9fa;
-    }
-    .card img {
-      height: 180px;
-      object-fit: cover;
-    }
-    footer {
-      background-color: #001933;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-    }
-    .btn-primary {
-      background-color: #0b2a2f;
-      border-color: #0b2a2f;
-    }
-    .btn-primary:hover {
-      background-color: #0b2a2f;
-      border-color: #0b2a2f;
-    }
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* HEADER */
+header {
+  background: #002244;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+}
+
+/* HERO SECTION */
+.hero {
+  background: url("/img/famiglia.jpg") center/cover no-repeat;
+  color: white;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: #0c3940;
+}
+
+.navbar-nav .nav-link {
+  position: relative;
+  font-weight: bold;
+  color: white !important;
+  transition: color 0.3s, transform 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #66ccff !important;
+  padding-bottom: 5px;
+  transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #66ccff;
+  bottom: 0;
+  left: 50%;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* CARD */
+.card img {
+  height: 180px;
+  object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+  background-color: #001933;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* BUTTON */
+.btn-primary {
+  background-color: #0b2a2f;
+  border-color: #0b2a2f;
+}
+
+.btn-primary:hover {
+  background-color: #0b2a2f;
+  border-color: #0b2a2f;
+}
+
   </style>
 </head>
 <body>

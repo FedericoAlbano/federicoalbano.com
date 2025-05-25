@@ -24,11 +24,40 @@
       background-color: #f8f9fa;
     }
     .navbar {
-      background-color: #0b2a2f;
+      background-color: #0c3940;
     }
     .navbar-nav .nav-link {
       color: white !important;
     }
+    .navbar-nav .nav-link {
+  position: relative;
+  font-weight: bold;
+  transition: color 0.3s, transform 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #66ccff !important;
+  padding-bottom: 5px;
+  transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #66ccff;
+  bottom: 0;
+  left: 50%;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
     header {
       background-color: #0b2a2f;
       color: white;
