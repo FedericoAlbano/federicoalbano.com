@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Assicurazioni – Federico Albano</title>
+  <meta name="description" content="Proteggi il tuo mutuo e la tua famiglia con le soluzioni assicurative su misura." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #0c3940;
+    }
+    .navbar {
+      background-color: #0c3940;
+    }
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #66ccff !important;
+    }
+    header {
+      background-color: #0b2a2f;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    section.content {
+      padding: 40px 15px;
+      max-width: 900px;
+      margin: 0 auto 60px auto;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .content-text, .content-image {
+      flex: 1 1 400px;
+    }
+    .content-text h2 {
+      color: #0c3940;
+      margin-bottom: 20px;
+    }
+    .content-text p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+    }
+    .btn-primary {
+      background-color: #0c3940;
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #06607f;
+    }
+    footer {
+      background-color: #0b2a2f;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
+    img.mutuo-img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 8px 18px rgb(12 57 64 / 0.15);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/">
+        <img src="/logo.ico" alt="Logo Federico Albano" />
+        Federico Albano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/chi-sono/">Chi sono</a></li>
+          <li class="nav-item"><a class="nav-link" href="/servizi/">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link" href="/simulatore/">Simulatore</a></li>
+          <li class="nav-item"><a class="nav-link" href="/recensioni/">Recensioni</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contatti/">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Assicurazioni</h1>
+      <p class="lead">Proteggi il tuo mutuo e la tua famiglia con le soluzioni assicurative su misura</p>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <section class="content">
+    <div class="content-text">
+      <h2>Perché un'assicurazione mutuo?</h2>
+      <p>Le assicurazioni legate al mutuo offrono protezione contro imprevisti che potrebbero compromettere il pagamento delle rate, come perdita del lavoro, malattia o decesso.</p>
+      <p>Ti aiuto a scegliere la polizza più adatta alle tue esigenze, per tutelare te e la tua famiglia con tranquillità e convenienza.</p>
+      <p>Contattami per una consulenza personalizzata e scopri le soluzioni più vantaggiose sul mercato.</p>
+      <a href="/simulatore/" class="btn btn-primary">Prova il simulatore</a>
+    </div>
+    <div class="content-image">
+      <img src="/img/assicurazione.jpg" alt="Assicurazioni mutuo" class="mutuo-img" />
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2025 Federico Albano - Consulente del Credito</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

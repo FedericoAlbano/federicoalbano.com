@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prestiti Personali – Federico Albano</title>
+  <meta name="description" content="Scopri i prestiti personali più adatti alle tue esigenze. Consulenza professionale e soluzioni su misura." />
+  <link rel="icon" href="/logo.ico" type="image/x-icon" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      color: #0b2a2f;
+    }
+    .navbar {
+      background-color: #0c3940;
+    }
+    .navbar-brand, .navbar-brand img {
+      vertical-align: middle;
+    }
+    .navbar-brand {
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #66ccff !important;
+    }
+    header {
+      background-color: #0b2a2f;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    .btn-primary {
+      background-color: #0c3940;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #145a6e;
+    }
+    .specchietto {
+      background-color: white;
+      border: 1px solid #0c3940;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .specchietto h3 {
+      color: #0c3940;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .specchietto table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .specchietto th, .specchietto td {
+      border: 1px solid #0c3940;
+      padding: 10px;
+      text-align: center;
+    }
+    .specchietto th {
+      background-color: #0c3940;
+      color: white;
+    }
+    .specchietto td:first-child {
+      text-align: left;
+      font-weight: 600;
+      background-color: #e6f0f6;
+    }
+    .content-container {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/logo.ico" alt="Logo" width="36" height="36" />
+        Federico Albano
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/chi-sono/">Chi sono</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/servizi/">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link" href="/simulatore/">Simulatore</a></li>
+          <li class="nav-item"><a class="nav-link" href="/recensioni/">Recensioni</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contatti/">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>Prestiti Personali</h1>
+      <p class="lead">Soluzioni finanziarie personalizzate per i tuoi progetti e bisogni.</p>
+    </div>
+  </header>
+
+  <!-- Contenuto principale -->
+  <main class="container content-container">
+    <div class="row align-items-center">
+      <!-- Testo descrittivo -->
+      <div class="col-md-6">
+        <h2>Cos'è un Prestito Personale?</h2>
+        <p>Il prestito personale è una somma di denaro concessa da un istituto finanziario che puoi utilizzare liberamente per qualsiasi necessità: acquisti, ristrutturazioni, spese mediche, viaggi e molto altro.</p>
+        
+        <h2>Cessione del Quinto</h2>
+        <p>La cessione del quinto è un tipo particolare di prestito personale che prevede la restituzione tramite una trattenuta diretta sulla busta paga o sulla pensione, fino ad un quinto dello stipendio netto mensile.</p>
+
+        <a href="/simulatore/" class="btn btn-primary mt-4">Prova il simulatore</a>
+      </div>
+
+      <!-- Immagine -->
+      <div class="col-md-6 text-center">
+        <img src="/img/prestito.jpg" alt="Prestiti Personali" class="img-fluid rounded shadow-sm" />
+      </div>
+    </div>
+
+    <!-- Specchietto comparativo -->
+    <section class="specchietto">
+      <h3>Confronto tra Prestito Personale e Cessione del Quinto</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Caratteristica</th>
+            <th>Prestito Personale</th>
+            <th>Cessione del Quinto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Modalità di rimborso</td>
+            <td>Rate mensili libere, concordate col finanziatore</td>
+            <td>Trattenuta diretta sulla busta paga o pensione</td>
+          </tr>
+          <tr>
+            <td>Durata massima</td>
+            <td>Fino a 120 mesi</td>
+            <td>Fino a 120 mesi</td>
+          </tr>
+          <tr>
+            <td>Garanzie richieste</td>
+            <td>Spesso senza garanzie, ma dipende dal finanziatore</td>
+            <td>Obbligatoria busta paga o pensione e polizza assicurativa</td>
+          </tr>
+          <tr>
+            <td>Destinazione</td>
+            <td>Libera, senza giustificativi</td>
+            <td>Libera, ma vincolata al rimborso diretto</td>
+          </tr>
+          <tr>
+            <td>Beneficiari</td>
+            <td>Chiunque con buona capacità di rimborso</td>
+            <td>Lavoratori dipendenti o pensionati</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="mt-5 py-3 text-center" style="background-color:#0b2a2f; color:white;">
+    <div class="container">
+      <p>© 2025 Federico Albano - Consulente del Credito</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
