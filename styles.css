@@ -1,13 +1,13 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0b1f3a;
+    background-color: #0b2a2f;
     color: #ffffff;
     line-height: 1.6;
 }
 
 header {
-    background-color: #07172d;
+    background-color: #0b2a2f;
     padding: 2em 1em;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -30,7 +30,7 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 2em;
-    background-color: #001b34;
+    background-color: #061d21;
     margin: 0;
     padding: 1em;
     flex-wrap: wrap;
@@ -126,7 +126,7 @@ main {
     margin-top: 2em;
     width: 100%;
     padding: 1em;
-    background-color: #0057a8;
+    background-color: #0b2a2f;
     color: white;
     border: none;
     border-radius: 8px;
@@ -137,7 +137,7 @@ main {
 }
 
 .simulatore button:hover {
-    background-color: #0073e6;
+    background-color: #0b2a2f;
 }
 
 #risultato {
@@ -151,13 +151,13 @@ main {
 footer {
     text-align: center;
     padding: 1.5em;
-    background-color: #07172d;
+    background-color: #0b2a2f;
     margin-top: 4em;
     color: #ccc;
     font-size: 0.9em;
 }
 .range-wrapper input[type="range"] {
-    accent-color: #007bff;
+    accent-color: #0b2a2f;
     transition: all 0.3s ease;
   }
   
@@ -166,7 +166,7 @@ footer {
   }
   
   .range-wrapper input[type="number"] {
-    border: 2px solid #007bff;
+    border: 2px solid #0b2a2f;
     border-radius: 8px;
     padding: 6px 10px;
     transition: all 0.3s ease;
@@ -192,15 +192,15 @@ footer {
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    background-color: #007bff;
-    color: #007bff;
+    background-color: #0b2a2f;
+    color: #0b2a2f;
     animation: dotFlashing 1s infinite linear alternate;
     animation-delay: 0.5s;
   }
   
   @keyframes dotFlashing {
     0% {
-      background-color: #007bff;
+      background-color: #0b2a2f;
     }
     50%,
     100% {
