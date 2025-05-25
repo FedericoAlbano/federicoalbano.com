@@ -1,9 +1,17 @@
-# Abilita il rewrite engine
 RewriteEngine On
+RewriteBase /
 
-# Se la richiesta non è un file o directory reale
+# Se la richiesta è un file o cartella esistente, non fa niente
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Se la richiesta è una cartella senza slash finale, aggiungilo e vai a index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+[^/])$ $1/ [R=301,L]
+
+# Se la richiesta non è un file o cartella, aggiunge .html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# Riscrive /chi-sono in /chi-sono/index.html
-RewriteRule ^(.+?)/?$ $1/index.html [L]
+RewriteRule ^(.+)$ $1.html [L]
