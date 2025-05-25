@@ -24,53 +24,6 @@ header p {
     margin-top: 0.5em;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 2em;
-    background-color: #061d21;
-    margin: 0;
-    padding: 1em;
-    flex-wrap: wrap;
-}
-
-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s, transform 0.3s ease, padding-bottom 0.3s ease; /* Aggiunto la transizione */
-}
-
-nav ul li a:hover,
-nav ul li a.active {
-    color: #66ccff;
-    text-decoration: underline;
-    padding-bottom: 5px; /* Aggiungi spazio sotto */
-    transform: translateY(-2px); /* Effetto di sollevamento */
-}
-
-nav ul li a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #66ccff;
-    bottom: 0;
-    left: 50%;
-    transition: width 0.3s ease, left 0.3s ease;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-    left: 0;
-}
-
-main {
-    padding: 2em;
-}
-
 .simulatore {
     background-color: #122f56;
     padding: 2.5em 2em;
@@ -222,4 +175,31 @@ footer {
   .quiz-btn:hover {
     background-color: #12606a;
   }
+
+  @keyframes slow-zoom {
+    0% {
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      transform: scale(1.03) translateY(-5px);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  .card img {
+    height: 180px;
+    object-fit: cover;
+    animation: slow-zoom 8s ease-in-out infinite;
+    transition: transform 0.3s ease;
+  }
+  
+  .card img:hover {
+    transform: scale(1.1) translateY(-10px);
+    animation-play-state: paused; /* ferma l’animazione quando hover */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-radius: 10px;
+  }
+  
   
