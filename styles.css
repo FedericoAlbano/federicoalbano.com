@@ -202,4 +202,29 @@ footer {
     border-radius: 10px;
   }
   
+  #confronto-prestito {
+    background-color: #ffffff;
+    color: #002244;
+    font-family: "Inter", sans-serif;
+  }
+  
+  #confronto-prestito h3 {
+    font-weight: 700;
+    color: #0c3940;
+  }
+  
+  #confronto-prestito h4 {
+    margin-bottom: 1rem;
+    color: #0b2a2f;
+  }
+  
+  #confronto-prestito ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  #confronto-prestito li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
   
