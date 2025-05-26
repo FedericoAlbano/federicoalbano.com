@@ -139,61 +139,69 @@
     </div>
   </header>
 
-  <!-- Simulatore -->
   <section>
     <div class="container">
-      <h2>Inserisci i dati richiesti</h2>
-
-      <!-- Selezione prodotto -->
-      <div class="mb-4">
-        <label for="prodotto">Tipo di prodotto:</label>
-        <select id="prodotto" class="form-select" onchange="aggiornaLimiti()">
-          <option value="prestito">Prestito</option>
-          <option value="mutuo">Mutuo</option>
-          <option value="consolidamento">Consolidamento</option>
-        </select>
-      </div>
-
-      <div id="tipo-tasso-container" style="display: none;">
-        <label for="tipoTasso">Tipo di tasso:</label>
-        <select id="tipoTasso">
-          <option value="fisso">Fisso</option>
-          <option value="variabile">Variabile</option>
-        </select>
-      </div>
-
-      <!-- Importo -->
-      <div class="slider-container">
-        <label for="importo">Importo richiesto (€):</label>
-        <div class="range-wrapper">
-          <input type="range" id="importo" class="form-range" min="1000" max="80000" value="10000" oninput="aggiornaInput('importo')">
-          <input type="number" id="importo-num" class="form-control" value="10000" onchange="aggiornaSlider('importo')">
+      <div class="d-flex flex-wrap gap-4 align-items-start">
+        <!-- Simulatore -->
+        <div style="flex: 1 1 400px; min-width: 300px;">
+          <h2>Inserisci i dati richiesti</h2>
+  
+          <!-- Selezione prodotto -->
+          <div class="mb-4">
+            <label for="prodotto">Tipo di prodotto:</label>
+            <select id="prodotto" class="form-select" onchange="aggiornaLimiti()">
+              <option value="prestito">Prestito</option>
+              <option value="mutuo">Mutuo</option>
+              <option value="consolidamento">Consolidamento</option>
+            </select>
+          </div>
+  
+          <div id="tipo-tasso-container" style="display: none;">
+            <label for="tipoTasso">Tipo di tasso:</label>
+            <select id="tipoTasso">
+              <option value="fisso">Fisso</option>
+              <option value="variabile">Variabile</option>
+            </select>
+          </div>
+  
+          <!-- Importo -->
+          <div class="slider-container">
+            <label for="importo">Importo richiesto (€):</label>
+            <div class="range-wrapper">
+              <input type="range" id="importo" class="form-range" min="1000" max="80000" value="10000" oninput="aggiornaInput('importo')">
+              <input type="number" id="importo-num" class="form-control" value="10000" onchange="aggiornaSlider('importo')">
+            </div>
+          </div>
+  
+          <!-- Durata -->
+          <div class="slider-container">
+            <label for="durata">Durata (anni):</label>
+            <div class="range-wrapper">
+              <input type="range" id="durata" class="form-range" min="1" max="10" value="5" oninput="aggiornaInput('durata')">
+              <input type="number" id="durata-num" class="form-control" value="5" onchange="aggiornaSlider('durata')">
+            </div>
+          </div>
+  
+          <!-- Calcolo rata -->
+          <button class="btn btn-primary mt-3" onclick="calcolaRata()">Calcola Rata</button>
+  
+          <div id="loading" style="display:none; text-align: center;" class="my-4">
+            <div class="dot-flashing"></div>
+          </div>
+          
+          <div id="risultato" class="mt-4">
+            <h4>Rata mensile: <span id="rata">0.00</span> €</h4>
+          </div>
         </div>
-      </div>
-
-      <!-- Durata -->
-      <div class="slider-container">
-        <label for="durata">Durata (anni):</label>
-        <div class="range-wrapper">
-          <input type="range" id="durata" class="form-range" min="1" max="10" value="5" oninput="aggiornaInput('durata')">
-          <input type="number" id="durata-num" class="form-control" value="5" onchange="aggiornaSlider('durata')">
+  
+        <!-- Grafico -->
+        <div style="flex: 1 1 300px; max-width: 400px;">
+          <canvas id="grafico-interessi" style="width: 100%; height: 300px;"></canvas>
         </div>
-      </div>
-
-      <!-- Calcolo rata -->
-      <button class="btn btn-primary mt-3" onclick="calcolaRata()">Calcola Rata</button>
-
-      <div id="loading" style="display:none; text-align: center;" class="my-4">
-        <div class="dot-flashing"></div>
-      </div>
-      
-      <div id="risultato" class="mt-4">
-        <h4>Rata mensile: <span id="rata">0.00</span> €</h4>
       </div>
     </div>
   </section>
-
-  <canvas id="grafico-interessi" width="400" height="200" class="mt-4"></canvas>
+  
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 

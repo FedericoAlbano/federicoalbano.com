@@ -5,7 +5,7 @@ function aggiornaLimiti() {
   const durata = document.getElementById("durata");
   const durataNum = document.getElementById("durata-num");
 
-  if (prodotto === "prestito") {
+  if (prodotto === "prestito" || prodotto === "consolidamento") {
     importo.min = 1000;
     importo.max = 80000;
     durata.min = 1;
@@ -42,14 +42,10 @@ function formatNumero(num) {
 
 const prodotto = document.getElementById("prodotto");
 const tipoTassoContainer = document.getElementById("tipo-tasso-container");
-const tipoTasso = document.getElementById("tipoTasso");
 
 prodotto.addEventListener("change", () => {
-  if (prodotto.value === "mutuo") {
-    tipoTassoContainer.style.display = "block";
-  } else {
-    tipoTassoContainer.style.display = "none";
-  }
+  aggiornaLimiti();
+  tipoTassoContainer.style.display = prodotto.value === "mutuo" ? "block" : "none";
 });
 
 function mostraAnimazione() {
@@ -62,7 +58,6 @@ function mostraAnimazione() {
   `;
 }
 
-// Funzione IRR iterativa (metodo di Newton-Raphson)
 function calcolaIRR(flussi, guess = 0.01) {
   const maxIterazioni = 1000;
   const tolleranza = 1e-6;
@@ -96,7 +91,7 @@ function calcolaRata() {
 
     const tassi = {
       prestito: 8,
-      consolidamento: 5.0,
+      consolidamento: 5,
       mutuo: {
         fisso: 3,
         variabile: 3.5
@@ -113,14 +108,20 @@ function calcolaRata() {
     const tassoMensile = tassoAnnuo / 12 / 100;
     const numeroRate = durataAnni * 12;
 
-    // Calcolo rata con formula francese
-    const rata = importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)));
-
-    // Costi aggiuntivi (ipotetici)
-    const costi = prodottoSelezionato === "mutuo" ? 1000 : 300;
+    const costi = prodottoSelezionato === "mutuo" ? importo * 0.02 : 0;
     const importoErogato = importo - costi;
 
-    // Calcolo TAEG iterativo (IRR mensile)
+    let rata = 0;
+    let piano;
+
+    if (prodottoSelezionato === "mutuo" && tassoScelto === "variabile") {
+      piano = calcolaPianoVariabile(importo, tassoMensile, numeroRate);
+      rata = piano[0].interesse + piano[0].capitale;
+    } else {
+      rata = importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)));
+      piano = calcolaPianoFisso(importo, tassoMensile, numeroRate);
+    }
+
     const flussi = [-importoErogato];
     for (let i = 1; i <= numeroRate; i++) {
       flussi.push(rata);
@@ -134,24 +135,42 @@ function calcolaRata() {
       <h5>TAEG stimato: ${(taegAnnuo * 100).toFixed(2).replace(".", ",")}%</h5>
     `;
 
-    // Calcolo piano ammortamento e aggiorno grafico
-    const piano = calcolaPianoAmmortamento(importo, tassoMensile, numeroRate);
     aggiornaGrafico(piano);
   }, 1000);
 }
 
-function calcolaPianoAmmortamento(importo, tassoMensile, numeroRate) {
+function calcolaPianoFisso(importo, tassoMensile, numeroRate) {
   const piano = [];
   let capitaleResiduo = importo;
+  const rata = importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)));
 
   for (let i = 1; i <= numeroRate; i++) {
     const interesseMese = capitaleResiduo * tassoMensile;
-    const quotaCapitale = (importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)))) - interesseMese;
+    const quotaCapitale = rata - interesseMese;
     capitaleResiduo -= quotaCapitale;
 
     piano.push({
       mese: i,
       interesse: interesseMese,
+      capitale: quotaCapitale,
+      residuo: capitaleResiduo > 0 ? capitaleResiduo : 0
+    });
+  }
+  return piano;
+}
+
+function calcolaPianoVariabile(importo, tassoMensile, numeroRate) {
+  const piano = [];
+  let capitaleResiduo = importo;
+  const quotaCapitale = importo / numeroRate;
+
+  for (let i = 1; i <= numeroRate; i++) {
+    const interesse = capitaleResiduo * tassoMensile;
+    capitaleResiduo -= quotaCapitale;
+
+    piano.push({
+      mese: i,
+      interesse: interesse,
       capitale: quotaCapitale,
       residuo: capitaleResiduo > 0 ? capitaleResiduo : 0
     });
@@ -168,9 +187,7 @@ function aggiornaGrafico(piano) {
   const interessi = piano.map(mese => mese.interesse.toFixed(2));
   const capitale = piano.map(mese => mese.capitale.toFixed(2));
 
-  if (chart) {
-    chart.destroy();
-  }
+  if (chart) chart.destroy();
 
   chart = new Chart(ctx, {
     type: 'bar',
@@ -210,16 +227,12 @@ function aggiornaGrafico(piano) {
         }
       },
       plugins: {
-        legend: {
-          position: 'top'
-        },
+        legend: { position: 'top' },
         tooltip: {
           mode: 'index',
           intersect: false,
           callbacks: {
-            label: function(context) {
-              return context.dataset.label + ': €' + context.parsed.y.toLocaleString('it-IT', {minimumFractionDigits: 2});
-            }
+            label: ctx => `${ctx.dataset.label}: €${parseFloat(ctx.parsed.y).toLocaleString("it-IT", { minimumFractionDigits: 2 })}`
           }
         }
       }
@@ -227,6 +240,7 @@ function aggiornaGrafico(piano) {
   });
 }
 
+// Quiz
 let selectedGoal = "";
 
 function openQuiz() {
@@ -246,18 +260,19 @@ function nextStep(step, goal) {
 function showResult(incomeStatus) {
   let resultText = "";
   if (selectedGoal === "Casa") {
-    resultText = incomeStatus === "stipendio" 
-      ? "Potresti richiedere un mutuo prima casa." 
+    resultText = incomeStatus === "stipendio"
+      ? "Potresti richiedere un mutuo prima casa."
       : "Ti consiglio di parlare con un consulente per valutare soluzioni agevolate.";
   } else if (selectedGoal === "Auto") {
-    resultText = incomeStatus === "stipendio" 
-      ? "Un prestito personale potrebbe fare al caso tuo." 
+    resultText = incomeStatus === "stipendio"
+      ? "Un prestito personale potrebbe fare al caso tuo."
       : "Potresti valutare un coobbligato o garanzie alternative.";
   } else if (selectedGoal === "Consolidamento") {
-    resultText = incomeStatus === "stipendio" 
-      ? "Il consolidamento debiti è la soluzione giusta!" 
+    resultText = incomeStatus === "stipendio"
+      ? "Il consolidamento debiti è la soluzione giusta!"
       : "Parliamone: ci sono soluzioni anche per chi ha difficoltà reddituali.";
   }
+
   document.getElementById("quiz-step-2").style.display = "none";
   document.getElementById("quiz-result").style.display = "block";
   document.getElementById("quiz-result-text").textContent = resultText;
