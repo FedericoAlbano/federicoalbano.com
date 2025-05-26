@@ -72,11 +72,11 @@ function calcolaRata() {
     const tassoScelto = document.getElementById("tipoTasso").value;
 
     const tassi = {
-      prestito: 7.5,
-      consolidamento: 9.0,
+      prestito: 8,
+      consolidamento: 5.0,
       mutuo: {
-        fisso: 3.2,
-        variabile: 2.1
+        fisso: 3,
+        variabile: 3.5
       }
     };
 
@@ -90,13 +90,50 @@ function calcolaRata() {
     const tassoMensile = tassoAnnuo / 12 / 100;
     const numeroRate = durataAnni * 12;
 
+    // Calcolo rata con formula francese
     const rata = importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)));
 
-    // Visualizzo solo la rata, niente TAEG
+    // Costi aggiuntivi (ipotetici)
+    const costi = prodottoSelezionato === "mutuo" ? 1000 : 300;
+    const importoErogato = importo - costi;
+
+    // Calcolo TAEG iterativo (IRR mensile)
+    const flussi = [-importoErogato];
+    for (let i = 1; i <= numeroRate; i++) {
+      flussi.push(rata);
+    }
+
+    const taegMensile = calcolaIRR(flussi);
+    const taegAnnuo = Math.pow(1 + taegMensile, 12) - 1;
+
     document.getElementById("risultato").innerHTML = `
       <h4>Rata mensile: <span id="rata">€${rata.toFixed(2)}</span></h4>
+      <h5>TAEG stimato: ${ (taegAnnuo * 100).toFixed(2).replace(".", ",") }%</h5>
     `;
   }, 1000);
+}
+
+// Funzione IRR iterativa (metodo di Newton-Raphson)
+function calcolaIRR(flussi, guess = 0.01) {
+  const maxIterazioni = 1000;
+  const tolleranza = 1e-6;
+  let rate = guess;
+
+  for (let i = 0; i < maxIterazioni; i++) {
+    let npv = 0;
+    let dNpv = 0;
+
+    for (let t = 0; t < flussi.length; t++) {
+      npv += flussi[t] / Math.pow(1 + rate, t);
+      dNpv += -t * flussi[t] / Math.pow(1 + rate, t + 1);
+    }
+
+    const newRate = rate - npv / dNpv;
+    if (Math.abs(newRate - rate) < tolleranza) return newRate;
+    rate = newRate;
+  }
+
+  return rate;
 }
 
 aggiornaLimiti();
@@ -136,4 +173,3 @@ function showResult(incomeStatus) {
   document.getElementById("quiz-result").style.display = "block";
   document.getElementById("quiz-result-text").textContent = resultText;
 }
-
