@@ -62,6 +62,29 @@ function mostraAnimazione() {
   `;
 }
 
+// Funzione IRR iterativa (metodo di Newton-Raphson)
+function calcolaIRR(flussi, guess = 0.01) {
+  const maxIterazioni = 1000;
+  const tolleranza = 1e-6;
+  let rate = guess;
+
+  for (let i = 0; i < maxIterazioni; i++) {
+    let npv = 0;
+    let dNpv = 0;
+
+    for (let t = 0; t < flussi.length; t++) {
+      npv += flussi[t] / Math.pow(1 + rate, t);
+      dNpv += -t * flussi[t] / Math.pow(1 + rate, t + 1);
+    }
+
+    const newRate = rate - npv / dNpv;
+    if (Math.abs(newRate - rate) < tolleranza) return newRate;
+    rate = newRate;
+  }
+
+  return rate;
+}
+
 function calcolaRata() {
   mostraAnimazione();
 
@@ -108,35 +131,101 @@ function calcolaRata() {
 
     document.getElementById("risultato").innerHTML = `
       <h4>Rata mensile: <span id="rata">€${rata.toFixed(2)}</span></h4>
-      <h5>TAEG stimato: ${ (taegAnnuo * 100).toFixed(2).replace(".", ",") }%</h5>
+      <h5>TAEG stimato: ${(taegAnnuo * 100).toFixed(2).replace(".", ",")}%</h5>
     `;
+
+    // Calcolo piano ammortamento e aggiorno grafico
+    const piano = calcolaPianoAmmortamento(importo, tassoMensile, numeroRate);
+    aggiornaGrafico(piano);
   }, 1000);
 }
 
-// Funzione IRR iterativa (metodo di Newton-Raphson)
-function calcolaIRR(flussi, guess = 0.01) {
-  const maxIterazioni = 1000;
-  const tolleranza = 1e-6;
-  let rate = guess;
+function calcolaPianoAmmortamento(importo, tassoMensile, numeroRate) {
+  const piano = [];
+  let capitaleResiduo = importo;
 
-  for (let i = 0; i < maxIterazioni; i++) {
-    let npv = 0;
-    let dNpv = 0;
+  for (let i = 1; i <= numeroRate; i++) {
+    const interesseMese = capitaleResiduo * tassoMensile;
+    const quotaCapitale = (importo * (tassoMensile / (1 - Math.pow(1 + tassoMensile, -numeroRate)))) - interesseMese;
+    capitaleResiduo -= quotaCapitale;
 
-    for (let t = 0; t < flussi.length; t++) {
-      npv += flussi[t] / Math.pow(1 + rate, t);
-      dNpv += -t * flussi[t] / Math.pow(1 + rate, t + 1);
-    }
-
-    const newRate = rate - npv / dNpv;
-    if (Math.abs(newRate - rate) < tolleranza) return newRate;
-    rate = newRate;
+    piano.push({
+      mese: i,
+      interesse: interesseMese,
+      capitale: quotaCapitale,
+      residuo: capitaleResiduo > 0 ? capitaleResiduo : 0
+    });
   }
-
-  return rate;
+  return piano;
 }
 
-aggiornaLimiti();
+let chart = null;
+
+function aggiornaGrafico(piano) {
+  const ctx = document.getElementById('grafico-interessi').getContext('2d');
+
+  const labels = piano.map(mese => `Mese ${mese.mese}`);
+  const interessi = piano.map(mese => mese.interesse.toFixed(2));
+  const capitale = piano.map(mese => mese.capitale.toFixed(2));
+
+  if (chart) {
+    chart.destroy();
+  }
+
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Quota Interessi',
+          data: interessi,
+          backgroundColor: 'rgba(255, 99, 132, 0.7)'
+        },
+        {
+          label: 'Quota Capitale',
+          data: capitale,
+          backgroundColor: 'rgba(54, 162, 235, 0.7)'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        x: {
+          stacked: true,
+          ticks: {
+            maxRotation: 90,
+            minRotation: 45,
+            maxTicksLimit: 12
+          }
+        },
+        y: {
+          stacked: true,
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'Euro (€)'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          position: 'top'
+        },
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+          callbacks: {
+            label: function(context) {
+              return context.dataset.label + ': €' + context.parsed.y.toLocaleString('it-IT', {minimumFractionDigits: 2});
+            }
+          }
+        }
+      }
+    }
+  });
+}
 
 let selectedGoal = "";
 
@@ -173,3 +262,5 @@ function showResult(incomeStatus) {
   document.getElementById("quiz-result").style.display = "block";
   document.getElementById("quiz-result-text").textContent = resultText;
 }
+
+aggiornaLimiti();
