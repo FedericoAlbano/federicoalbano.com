@@ -246,4 +246,27 @@ footer {
   }
   
   
+  #animated-cta {
+    background-color: #e9f2f9;
+  }
+  
+  .animate-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+    animation-name: fadeSlideUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+  }
+  
+  .animate-text.delay-1 {
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes fadeSlideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   
