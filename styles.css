@@ -270,3 +270,15 @@ footer {
     }
   }
   
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 3s ease-out;
+  }
+  
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  

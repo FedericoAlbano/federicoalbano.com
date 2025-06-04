@@ -268,10 +268,11 @@ footer {
 
     <!-- Qui inseriamo la nuova sezione animata -->
     
-    <section id="animated-cta" class="py-5 bg-light text-center">
-      <h2 class="animate-text">Il futuro si costruisce con scelte consapevoli</h2>
-      <p class="animate-text delay-1">Affidati a un esperto per realizzare i tuoi progetti.</p>
+    <section class="scroll-animate" style="padding: 4rem 2rem; text-align: center;">
+      <h2>Perché scegliere me?</h2>
+      <p>Consulenza gratuita, soluzioni su misura, e un supporto costante in ogni fase della pratica.</p>
     </section>
+    
     
     <!-- Sezione call to action esistente -->
     <section class="py-5 section-dark">
@@ -368,6 +369,20 @@ footer {
 
     document.getElementById("quiz-result-text").textContent = resultText;
   }
+</script>
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // opzionale: attiva solo una volta
+      }
+    });
+  });
+
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    observer.observe(el);
+  });
 </script>
 
 </body>
