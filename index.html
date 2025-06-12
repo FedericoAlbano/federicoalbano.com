@@ -1,202 +1,112 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
-  <script type="text/javascript">
-    var _iub = _iub || [];
-    _iub.csConfiguration = {"siteId":4048028,"cookiePolicyId":70196483,"lang":"it","storage":{"useSiteId":true}};
-    </script>
-    <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4048028.js"></script>
-    <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
-    <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
-  <title>Federico Albano - Consulente del Credito</title>
-<meta name="description" content="Scopri i servizi di consulenza per mutui e prestiti offerti da Federico Albano. Esperienza, trasparenza, risultati.">
-<meta name="keywords" content="mutui Reggio Calabria, prestiti Reggio Calabria, consulente mutui Reggio Calabria, prestiti personali, mediazione creditizia, finanziamenti, calcolo rata mutuo, preventivo prestito">  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZXJYY0VY7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-7ZXJYY0VY7');
-  </script>
-  <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '499747094648979');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=499747094648979&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Federico Albano - Consulente del Credito</title>
 
-  <!-- Open Graph per l'immagine di anteprima -->
-  <meta property="og:title" content="Federico Albano - Consulente del Credito" />
-  <meta property="og:description" content="Consulenze su misura per mutui, prestiti e consolidamento." />
-  <meta property="og:image" content="https://www.federicoalbanoconsulente.com/img/logo.jpg" />
-  <meta property="og:url" content="https://www.federicoalbanoconsulente.com/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Federico Albano - Consulente del Credito" />
-  <meta name="twitter:description" content="Consulenze su misura per mutui, prestiti e consolidamento." />
-  <meta name="twitter:image" content="https://www.federicoalbanoconsulente.com/img/logo.jpg" />
-  
-  <link rel="canonical" href="https://www.federicoalbano.com/" />
-
-  <link rel="stylesheet" href="styles.css" />
-
+  <!-- AOS + Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const navbarToggler = document.querySelector(".navbar-toggler");
-      const navbarCollapse = document.querySelector("#navbarNav");
-  
-      navbarToggler.addEventListener("click", function () {
-        const isExpanded = navbarCollapse.classList.contains("show");
-  
-        if (isExpanded) {
-          // Se è già aperto, chiudilo
-          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-          bsCollapse.hide();
-        } else {
-          // Altrimenti aprilo
-          const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-            toggle: true
-          });
-        }
-      });
-    });
-  </script>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="icon" type="image/x-icon" href="/img/logo.ico" />
-  <link rel="shortcut icon" href="/img/logo.ico" type="image/x-icon" />
-
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
     body {
-  font-family: "Inter", sans-serif;
-  background-color: #f8f9fa;
-}
+      font-family: "Inter", sans-serif;
+      background-color: #f8f9fa;
+    }
 
-/* HEADER */
-header {
-  background: #002244;
-  color: white;
-  padding: 40px 0;
-  text-align: center;
-}
+    .navbar {
+      background-color: #0c3940;
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      font-weight: bold;
+      color: white !important;
+      transition: color 0.3s, transform 0.3s ease, padding-bottom 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #66ccff !important;
+      padding-bottom: 5px;
+      transform: translateY(-2px);
+    }
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #66ccff;
+      bottom: 0;
+      left: 50%;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+      left: 0;
+    }
 
-/* HERO SECTION */
-.hero {
-  background: url("/img/famiglia.jpg") center/cover no-repeat;
-  color: white;
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
-}
+    .hero {
+      background: url('/img/famiglia.jpg') center/cover no-repeat;
+      color: white;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
 
-.hero h1 {
-  font-size: 3rem;
-}
+    .hero h1 {
+      font-size: 3rem;
+    }
 
-/* NAVBAR */
-.navbar {
-  background-color: #0c3940;
-}
+    .section-dark {
+      background-color: #0b2a2f;
+      color: white;
+    }
 
-.navbar-nav .nav-link {
-  position: relative;
-  font-weight: bold;
-  color: white !important;
-  transition: color 0.3s, transform 0.3s ease, padding-bottom 0.3s ease;
-}
+    .stat-box {
+      background: #0c3940;
+      color: white;
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
 
-.navbar-nav .nav-link:hover,
-.navbar-nav .nav-link.active {
-  color: #66ccff !important;
-  padding-bottom: 5px;
-  transform: translateY(-2px);
-}
+    footer {
+      background-color: #0b2a2f;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+    }
 
-.navbar-nav .nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 2px;
-  background: #66ccff;
-  bottom: 0;
-  left: 50%;
-  transition: width 0.3s ease, left 0.3s ease;
-}
+    .btn-primary {
+      background-color: #0b2a2f;
+      border-color: #0b2a2f;
+    }
 
-.navbar-nav .nav-link:hover::after {
-  width: 100%;
-  left: 0;
-}
+    .faq-section details {
+      margin-bottom: 1rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 5px;
+    }
 
-/* CARD */
-.card img {
-  height: 180px;
-  object-fit: cover;
-}
-
-/* FOOTER */
-footer {
-  background-color: #001933;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-}
-
-/* BUTTON */
-.btn-primary {
-  background-color: #0b2a2f;
-  border-color: #0b2a2f;
-}
-
-.btn-primary:hover {
-  background-color: #0b2a2f;
-  border-color: #0b2a2f;
-}
-
+    .scroll-animate {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
   </style>
 </head>
+
 <body>
-  <!-- Navbar -->
+
+  <!-- NAVBAR ORIGINALE -->
   <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
     <div class="container">
-      <img src="/img/logo.ico" alt="Logo Federico Albano    " width="36"/>
-      <a class="navbar-brand" href="/">   Federico Albano</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-      >
+      <img src="/img/logo.ico" alt="Logo Federico Albano" width="36"/>
+      <a class="navbar-brand" href="/">Federico Albano</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -212,83 +122,138 @@ footer {
     </div>
   </nav>
 
-<!-- Hero -->
-<section class="hero" aria-label="Sezione principale del sito">
-  <div class="text-center">
-    <h1>Consulente prestiti e mutui a Reggio Calabria</h1>
-    <p class="lead">Consulenze su misura per mutui, prestiti personali, consolidamento debiti e soluzioni finanziarie personalizzate</p>
-    <a href="/contatti/" class="btn btn-primary btn-lg mt-3" aria-label="Richiedi una consulenza gratuita">Contattami</a>
+  <!-- HERO -->
+  <section class="hero d-flex align-items-center justify-content-center" style="height: 90vh; position: relative; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('/img/famiglia.jpg') center/cover no-repeat;">
+    <div class="container text-center text-white">
+      <h1 class="display-4 fw-bold" data-aos="fade-down" data-aos-delay="100">Prestiti e Mutui Personalizzati</h1>
+      <p class="lead mt-3" data-aos="fade-up" data-aos-delay="300">Consulenza su misura a Reggio Calabria</p>
+      <p class="mt-2" data-aos="fade-up" data-aos-delay="600">Professionalità, chiarezza e supporto completo dalla prima richiesta alla firma finale.</p>
+      <a href="/contatti/" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="800">Richiedi una consulenza gratuita</a>
+    </div>
+  </section>
+  
+
+  <!-- SPAZIO VERTICALE + SEZIONE SERVIZI -->
+<section class="py-5" style="background-color: #ffffff;" data-aos="fade-up">
+  <div class="container text-center">
+    <h2 class="mb-4">Scopri i miei servizi</h2>
+    <div class="row g-4">
+
+      <!-- Mutui -->
+      <div class="col-md-4" data-aos="zoom-in">
+        <a href="/servizi/" style="text-decoration: none; color: inherit;">
+          <div class="card shadow-sm h-100">
+            <img src="/img/mutuo.jpg" class="card-img-top" alt="Mutui">
+            <div class="card-body">
+              <h5 class="card-title">Mutui</h5>
+              <p class="card-text">Scegli il mutuo migliore per la tua nuova casa.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Prestiti -->
+      <div class="col-md-4" data-aos="zoom-in">
+        <a href="/servizi/prestiti/" style="text-decoration: none; color: inherit;">
+          <div class="card shadow-sm h-100">
+            <img src="/img/prestito.jpg" class="card-img-top" alt="Prestiti">
+            <div class="card-body">
+              <h5 class="card-title">Prestiti</h5>
+              <p class="card-text">Soluzioni flessibili per ogni esigenza personale.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Consolidamento -->
+      <div class="col-md-4" data-aos="zoom-in">
+        <a href="/servizi/consolidamento/" style="text-decoration: none; color: inherit;">
+          <div class="card shadow-sm h-100">
+            <img src="/img/consolidamento.jpg" class="card-img-top" alt="Consolidamento debiti">
+            <div class="card-body">
+              <h5 class="card-title">Consolidamento</h5>
+              <p class="card-text">Un'unica rata per semplificare i tuoi impegni.</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
   </div>
 </section>
 
-  <!-- Servizi rapidi -->
-  <section class="py-5 section-light">
+  </section>
+  <!-- STATISTICHE -->
+  <section class="py-5">
     <div class="container">
-      <div class="text-center mb-5">
-        <h2>I miei servizi</h2>
-        <p class="text-muted">Soluzioni flessibili e su misura</p>
-      </div>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <a href="/servizi/" style="text-decoration: none; color: inherit;">
-              <img src="/img/mutuo.jpg" class="card-img-top" alt="Mutuo per la casa a Reggio Calabria" />
-              <div class="card-body">
-                <h5 class="card-title">Mutui</h5>
-              </div>
-            </a>
-            <p class="card-text px-3">Ti aiuto a ottenere il mutuo migliore per la tua nuova casa.</p>
+      <div class="row text-center" data-aos="fade-up">
+        <div class="col-md-4">
+          <div class="stat-box">
+            <h3>150+</h3>
+            <p>Clienti soddisfatti</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <a href="/servizi/prestiti/" style="text-decoration: none; color: inherit;">
-              <img src="/img/prestito.jpg" class="card-img-top" alt="Prestito" />
-              <div class="card-body">
-                <h5 class="card-title">Prestiti</h5>
-              </div>
-            </a>
-            <p class="card-text px-3">Prestiti personali con rate accessibili e tempi rapidi.</p>
+        <div class="col-md-4">
+          <div class="stat-box">
+            <h3>2.5M€</h3>
+            <p>Finanziamenti erogati</p>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <a href="/servizi/consolidamento/" style="text-decoration: none; color: inherit;">
-              <img src="/img/consolidamento.jpg" class="card-img-top" alt="Consolidamento" />
-              <div class="card-body">
-                <h5 class="card-title">Consolidamento</h5>
-              </div>
-            </a>
-            <p class="card-text px-3">
-              Un’unica rata per gestire meglio i tuoi impegni economici.
-            </p>
+        <div class="col-md-4">
+          <div class="stat-box">
+            <h3>10+</h3>
+            <p>Anni di esperienza</p>
           </div>
         </div>
       </div>
-      
-    </section>  <!-- fine sezione servizi -->
+    </div>
+  </section>
 
-    <!-- Qui inseriamo la nuova sezione animata -->
-    
-    <section class="scroll-animate" style="padding: 4rem 2rem; text-align: center;">
-      <h2>Perché scegliere me?</h2>
-      <p>Consulenza gratuita, soluzioni su misura, e un supporto costante in ogni fase della pratica.</p>
-    </section>
-    
-    
-    <!-- Sezione call to action esistente -->
-    <section class="py-5 section-dark">
-      ...
-    </section>
-    
-
-  <!-- Call to Action -->
-  <section class="scroll-animate" style="padding: 4rem 2rem; text-align: center;">
+  <!-- COME FUNZIONA -->
+  <section class="py-5" data-aos="fade-up">
     <div class="container text-center">
+      <h2 class="mb-4">Come funziona la consulenza</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h4>1. Primo contatto</h4>
+          <p>Analisi gratuita delle tue esigenze finanziarie.</p>
+        </div>
+        <div class="col-md-4">
+          <h4>2. Soluzione su misura</h4>
+          <p>Ti propongo solo ciò che è adatto al tuo profilo.</p>
+        </div>
+        <div class="col-md-4">
+          <h4>3. Affiancamento completo</h4>
+          <p>Ti seguo fino alla data di stipula.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section py-5" data-aos="fade-up">
+    <div class="container">
+      <h2 class="text-center mb-4">Domande frequenti</h2>
+      <details><summary>Chi può richiedere una consulenza?</summary><p>Chiunque cerchi mutui, prestiti o consolidamenti.</p></details>
+      <details><summary>Quanto costa?</summary><p>La prima consulenza è completamente gratuita.</p></details>
+      <details><summary>Lavori anche online?</summary><p>Sì, puoi fare tutto comodamente da casa con videochiamata e documentazione digitale.</p></details>
+    </div>
+  </section>
+
+  <!-- SPAZIO FACEBOOK -->
+  <section class="py-5" data-aos="fade-up">
+    <div class="container text-center">
+      <h2 class="mb-4">Ultimi aggiornamenti</h2>
+      <!-- Inserisci qui il codice della tua API o plugin Facebook -->
+      <!-- Esempio: <div class="fb-page" data-href="https://www.facebook.com/tuapagina"></div> -->
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="scroll-animate section-dark">
+    <div class="container text-center" data-aos="fade-up">
       <h2 class="mb-3">Hai bisogno di una consulenza?</h2>
-      <p class="mb-4">
-        Scrivimi subito e troveremo insieme la soluzione migliore per te.
-      </p>
+      <p class="mb-4">Scrivimi subito e troveremo insieme la soluzione migliore per te.</p>
       <a href="/contatti/" class="btn btn-light">Contattami ora</a>
     </div>
   </section>
@@ -300,99 +265,12 @@ footer {
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Quiz Pop-up -->
-<div id="quiz-popup" style="position: fixed; bottom: 20px; right: 20px; background: white; border: 1px solid #ccc; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 10px; width: 300px; max-width: 90%; z-index: 9999; padding: 20px; display: none;">
-  <button onclick="closeQuiz()" style="position:absolute; top:8px; right:12px; border:none; background:none; font-size:18px;">×</button>
-  <div id="quiz-step-1">
-    <h5>Che tipo di obiettivo hai?</h5>
-    <button class="quiz-btn" onclick="nextStep(2, 'Casa')">Comprare casa</button>
-    <button class="quiz-btn" onclick="nextStep(2, 'Auto')">Comprare auto</button>
-    <button class="quiz-btn" onclick="nextStep(2, 'Consolidamento')">Riunire i debiti</button>
-  </div>
-  <div id="quiz-step-2" style="display:none;">
-    <h5>Hai già uno stipendio fisso?</h5>
-    <button class="quiz-btn" onclick="showResult('stipendio')">Sì</button>
-    <button class="quiz-btn" onclick="showResult('no-stipendio')">No</button>
-  </div>
-  <div id="quiz-result" style="display:none;">
-    <h5>Risultato:</h5>
-    <p id="quiz-result-text"></p>
-    <a href="/contatti/" class="btn btn-primary btn-sm mt-2">Richiedi Consulenza</a>
-  </div>
-</div>
-
-<!-- Trigger Button -->
-<button onclick="openQuiz()" style="position: fixed; bottom: 20px; left: 20px; z-index: 9998; background-color: #0c3940; color: white; border: none; border-radius: 30px; padding: 10px 20px; font-weight: bold;">Scopri il prestito giusto</button>
-<script>
-  function openQuiz() {
-    // Mostra il popup
-    document.getElementById("quiz-popup").style.display = "block";
-    // Mostra solo il primo step
-    document.getElementById("quiz-step-1").style.display = "block";
-    document.getElementById("quiz-step-2").style.display = "none";
-    document.getElementById("quiz-result").style.display = "none";
-  }
-
-  function closeQuiz() {
-    document.getElementById("quiz-popup").style.display = "none";
-  }
-
-  function nextStep(step, answer) {
-    // Nascondi tutti gli step e risultato
-    document.getElementById("quiz-step-1").style.display = "none";
-    document.getElementById("quiz-step-2").style.display = "none";
-    document.getElementById("quiz-result").style.display = "none";
-
-    // Mostra lo step desiderato
-    document.getElementById("quiz-step-" + step).style.display = "block";
-
-    // (Opzionale) puoi salvare la risposta o usarla per il risultato
-    // Per esempio: console.log("Risposta step precedente:", answer);
-  }
-
-  function showResult(type) {
-    // Nascondi tutti gli step
-    document.getElementById("quiz-step-1").style.display = "none";
-    document.getElementById("quiz-step-2").style.display = "none";
-
-    // Mostra il risultato
-    document.getElementById("quiz-result").style.display = "block";
-
-    // Cambia il testo del risultato in base alla risposta
-    let resultText = "";
-    if(type === "stipendio") {
-      resultText = "Puoi richiedere un prestito con condizioni vantaggiose grazie al tuo stipendio fisso.";
-    } else if(type === "no-stipendio") {
-      resultText = "Potresti aver bisogno di ulteriori garanzie per ottenere un prestito.";
-    } else {
-      resultText = "Grazie per aver completato il quiz.";
-    }
-
-    document.getElementById("quiz-result-text").textContent = resultText;
-  }
-</script>
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // opzionale: attiva solo una volta
-      }
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: false,
+      duration: 800
     });
-  });
-
-  document.querySelectorAll('.scroll-animate').forEach(el => {
-    observer.observe(el);
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    once: true,
-    duration: 800
-  });
-</script>
-
+  </script>
 </body>
 </html>
