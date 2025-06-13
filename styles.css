@@ -281,4 +281,24 @@ footer {
     transform: translateY(0);
   }
   
+  .custom-navbar {
+    background: rgba(12, 57, 64, 0.8);
+    backdrop-filter: blur(6px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 0.75rem 0;
+  }
+  
+  .custom-navbar.scrolled {
+    background: #0c3940;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+  }
   
