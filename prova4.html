@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scelta Prodotto - Federico Albano</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="container py-5" style="max-width: 500px;">
+    <h2 class="mb-4">Scegli il prodotto</h2>
+
+    <form id="sceltaForm">
+
+      <div class="mb-3">
+        <label for="prodotto" class="form-label required">Prodotto desiderato</label>
+        <select id="prodotto" name="prodotto" class="form-select" required>
+          <option value="" disabled selected>Seleziona un prodotto</option>
+          <option value="mutuo">Mutuo</option>
+          <option value="mutuo_liquidita">Mutuo liquidità su casa di proprietà</option>
+          <option value="prestito">Prestito</option>
+          <option value="cessione_quinto">Cessione del quinto</option>
+          <option value="consolidamento">Consolidamento debiti</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="importo" class="form-label required">Importo richiesto (€)</label>
+        <input type="number" id="importo" name="importo" class="form-control" min="1000" max="1000000" step="100" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="durata" class="form-label required">Durata (mesi)</label>
+        <input type="number" id="durata" name="durata" class="form-control" min="6" max="360" step="1" required />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Prosegui</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('sceltaForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const prodotto = encodeURIComponent(document.getElementById('prodotto').value);
+      const importo = encodeURIComponent(document.getElementById('importo').value);
+      const durata = encodeURIComponent(document.getElementById('durata').value);
+
+      // Reindirizza alla pagina richiesta con parametri
+      window.location.href = `richiesta-consulenza.html?prodotto=${prodotto}&importo=${importo}&durata=${durata}`;
+    });
+  </script>
+
+</body>
+</html>
