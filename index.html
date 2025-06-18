@@ -377,6 +377,88 @@
       </div>
     </div>
   </section>
+
+  <section id="facebook-posts" style="background-color:#0b2a2f; color:#FFFFFF; padding:2rem; border-radius:8px; max-width:900px; margin:2rem auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <h2 style="color:#175c67; margin-bottom:1.5rem; font-weight:700; font-size:1.8rem; text-align:center;">Ultimi post da Facebook</h2>
+    <div id="fb-posts-container" style="
+      display: flex; 
+      gap: 2rem; 
+      overflow-x: auto; 
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+    ">
+      <!-- Post caricati da JS -->
+    </div>
+
+  </section>
+  
+  <section>
+  <div class="container" id="fb-posts-container" style="display: flex; gap: 2rem; overflow-x: auto; padding-bottom: 1rem; scroll-behavior: smooth;"></div>
+  </div>
+  <script>
+    const staticPosts = [
+      {
+        message: "Mutuo? No stress! Scopri le migliori offerte sul mercato. Contattami per una consulenza gratuita!",
+        permalink_url: "https://www.facebook.com/permalink.php?story_fbid=pfbid02bdQfZwS39mFoeB5si8xfqVdrvwq8cgiA6n2n7Bg1CVbj4bCZuwUmEqknjpkmcZoHl&id=61577440082599&locale=it_IT",
+        created_time: "2025-06-01T12:00:00+0000",
+        image_url: "img/mutuonostress.jpg"
+      },
+      {
+        message: "Mutuo casa? Scopri le migliori offerte sul mercato. Contattami per una consulenza gratuita!",
+        permalink_url: "https://www.facebook.com/permalink.php?story_fbid=pfbid034Hc5KJyD1Qdog6c3t7RzpVjoXrKvMm7sikyK2c46w5f2ZDKnXd74udnKN1dMJcjWl&id=61577440082599&locale=it_IT",
+        created_time: "2025-06-10T15:30:00+0000",
+        image_url: "img/mutuou36.jpg"
+      },
+      {
+        message: "Prestiti rapidi e facili approvazioni. Contattami per maggiori informazioni!",
+        permalink_url: "https://www.facebook.com/permalink.php?story_fbid=pfbid022Y3Ln3xy43xqAd9vJev54XhMSSUz8Vq4QsYDnUsCAgGSzfWjvsKcD7NbcnHxGuc9l&id=61577440082599&locale=it_IT",
+        created_time: "2025-06-15T09:20:00+0000",
+        image_url: "img/prestito4.jpg"
+      }
+    ];
+  
+    function loadStaticPosts() {
+      const container = document.getElementById('fb-posts-container');
+      container.innerHTML = '';
+  
+      staticPosts.forEach(post => {
+        const postEl = document.createElement('div');
+        postEl.style.minWidth = '280px';
+        postEl.style.backgroundColor = '#102B54';
+        postEl.style.border = '1px solid #22466A';
+        postEl.style.borderRadius = '8px';
+        postEl.style.padding = '1rem';
+        postEl.style.display = 'flex';
+        postEl.style.flexDirection = 'column';
+        postEl.style.gap = '1rem';
+        postEl.style.cursor = 'pointer';
+        postEl.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+  
+        postEl.addEventListener('mouseenter', () => {
+          postEl.style.transform = 'scale(1.05)';
+          postEl.style.boxShadow = '0 4px 15px rgba(79, 195, 247, 0.5)';
+        });
+        postEl.addEventListener('mouseleave', () => {
+          postEl.style.transform = 'scale(1)';
+          postEl.style.boxShadow = 'none';
+        });
+  
+        postEl.innerHTML = `
+          <a href="${post.permalink_url}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#4FC3F7; display: flex; flex-direction: column; align-items: center;">
+            <img src="${post.image_url}" alt="Immagine post" style="width:150px; height:150px; object-fit: cover; border-radius: 8px; margin-bottom: 0.8rem;">
+            <p style="margin: 0; font-weight: 600; font-size: 1rem; text-align: center;">${post.message}</p>
+            <small style="color:#A9CCE3; font-size: 0.8rem; margin-top: 0.5rem;">${new Date(post.created_time).toLocaleDateString()}</small>
+          </a>
+        `;
+  
+        container.appendChild(postEl);
+      });
+    }
+  
+    window.addEventListener('DOMContentLoaded', loadStaticPosts);
+  </script>
+  </section>
+  
   
   
 

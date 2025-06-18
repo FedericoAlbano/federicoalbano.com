@@ -1,0 +1,61 @@
+<section id="facebook-posts" style="background-color:#0b2a2f; color:#FFFFFF; padding:2rem; border-radius:8px; max-width:700px; margin:2rem auto; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <h2 style="color:#175c67; margin-bottom:1rem; font-weight:700; font-size:1.8rem; text-align:center;">Ultimi post da Facebook</h2>
+    <div id="fb-posts-container" style="min-height:150px; font-size:1rem; line-height:1.4;">Caricamento post...</div>
+  </section>
+  
+  <script>
+    const pageId = '61577440082599';  // Il tuo ID pagina Facebook
+    const accessToken = 'EAAaw2RNWLkkBOwBEkAWZCLJV7CineIHhBh3HiFZCvD3Ie0AC2uIY6Ang68OPNoaYwf531CrZCnwsJZBRhApcrD2LXlEYpkX6LOp0dkZAVtZCAbIpZCDw4XDPjWOVCftpc2Qnq6IvCbmPpBEZCcO08SK7xW0LenSKZBzZCcGFCUGBme9YW906UUZAiFsBlwwbcdlX70CAdLRd3jVYdyIxb0Vr8s4JHgDeu0YK6NAL8mnQ3N368cZD';  // Inserisci qui il tuo token di accesso
+  
+    async function fetchFacebookPosts() {
+      const url = `https://graph.facebook.com/v17.0/${pageId}/posts?fields=message,created_time,permalink_url&access_token=${accessToken}`;
+  
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+  
+        const container = document.getElementById('fb-posts-container');
+        container.innerHTML = '';
+  
+        if (data.data && data.data.length > 0) {
+          data.data.forEach(post => {
+            const postEl = document.createElement('div');
+            postEl.style.marginBottom = '1.5rem';
+            postEl.style.padding = '1rem';
+            postEl.style.border = '1px solid #22466A';
+            postEl.style.borderRadius = '6px';
+            postEl.style.backgroundColor = '#102B54';
+            postEl.style.transition = 'background-color 0.3s ease';
+  
+            postEl.addEventListener('mouseenter', () => {
+              postEl.style.backgroundColor = '#1B3E73';
+            });
+            postEl.addEventListener('mouseleave', () => {
+              postEl.style.backgroundColor = '#102B54';
+            });
+  
+            const message = post.message ? post.message : '[Post senza testo]';
+  
+            postEl.innerHTML = `
+              <a href="${post.permalink_url}" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#4FC3F7; display:block;">
+                <p style="margin:0 0 0.5rem 0; font-weight:500;">${message}</p>
+                <small style="color:#A9CCE3;">${new Date(post.created_time).toLocaleString()}</small>
+              </a>
+            `;
+  
+            container.appendChild(postEl);
+          });
+        } else {
+          container.textContent = 'Nessun post trovato.';
+        }
+      } catch (error) {
+        console.error('Errore nel recuperare i post Facebook:', error);
+        document.getElementById('fb-posts-container').textContent = 'Errore nel caricamento dei post.';
+      }
+    }
+  
+    window.addEventListener('DOMContentLoaded', fetchFacebookPosts);
+  </script>
+  
+  
+  
