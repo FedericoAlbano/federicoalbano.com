@@ -194,5 +194,22 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL570AU3N8pMNRj-yyQ2IfOp53q7bc2wo&callback=initMap" async defer></script>
 
+<!-- Script Calendly loader -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  window.addEventListener("message", function(e) {
+    if (e.data.event && e.data.event.indexOf("calendly") !== -1) {
+      const loader = document.getElementById("calendly-loader");
+      const widget = document.querySelector(".calendly-inline-widget");
+      if (loader && widget) {
+        loader.style.display = "none";
+        widget.style.display = "block";
+        setTimeout(() => {
+          widget.style.opacity = 1;
+        }, 50);
+      }
+    }
+  });
+</script>
 </body>
 </html>
