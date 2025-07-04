@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Tag & Ads -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZXJYY0VY7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-7ZXJYY0VY7');
-  </script>
-
-  <!-- Google Ads tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11027328356"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
     gtag('config', 'AW-11027328356');
   </script>
 
@@ -24,6 +16,8 @@
   <title>Contatti - Federico Albano</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -61,6 +55,9 @@
       width: 100%;
       left: 0;
     }
+    .section-title {
+      color: #0c3940;
+    }
     .contact-section {
       padding: 60px 0;
     }
@@ -72,12 +69,6 @@
     .social-icons img:hover {
       transform: scale(1.1);
     }
-    footer {
-      background-color: #0b2a2f;
-      color: white;
-      text-align: center;
-      padding: 20px 0;
-    }
     #map {
       height: 400px;
       width: 100%;
@@ -85,19 +76,52 @@
       margin-top: 20px;
       box-shadow: 0 4px 15px rgba(12,57,64,0.3);
     }
-    .loader {
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid #0c3940;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
+    footer {
+      background-color: #0b2a2f;
+      color: white;
+      text-align: center;
+      padding: 40px 0 20px;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .footer-links a {
+      color: #66ccff;
+      margin: 0 15px;
+      text-decoration: none;
     }
+    .divider {
+      height: 60px;
+      background: linear-gradient(to right, #0c3940 0%, #66ccff 100%);
+      margin: 60px 0;
+    }
+    .faq .accordion-button:not(.collapsed) {
+      color: #0c3940;
+      background-color: #e6f9ff;
+    }
+    .contact-extra-boxes {
+    margin-top: 60px;
+  }
+  .contact-box {
+    background-color: #f7fdff;
+    border-left: 6px solid #0c3940;
+    border-radius: 8px;
+    padding: 25px 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(12, 57, 64, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .contact-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(12, 57, 64, 0.25);
+  }
+  .contact-box h4 {
+    color: #0c3940;
+    font-weight: bold;
+  }
+  .contact-box p {
+    margin: 0;
+  }
+  .cta-buttons a {
+    margin: 10px;
+  }
   </style>
 </head>
 <body>
@@ -126,42 +150,113 @@
 <!-- Contatti -->
 <section class="contact-section">
   <div class="container">
-    <h1 class="text-center mb-4" style="color:#0c3940;">Contattami</h1>
-    <div class="text-center mb-3">
-      <p>📍 <a href="https://maps.app.goo.gl/uNW8GUS2DzxYvDvG9"> Via Girolamo Arcovito 33/35, Reggio Calabria, Italia</a></p>
+    <h1 class="text-center mb-4 section-title" data-aos="fade-down">Contattami</h1>
+    <div class="text-center mb-4" data-aos="fade-up">
+      <p>📍 <a href="https://maps.app.goo.gl/uNW8GUS2DzxYvDvG9"> Via Girolamo Arcovito 33/35, Reggio Calabria</a></p>
       <p>📧 Email: <a href="mailto:federico.albano@kiron.it">federico.albano@kiron.it</a></p>
     </div>
 
     <!-- Social icons -->
-    <div class="social-icons d-flex justify-content-center mb-4">
-      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
-      </a>
-      <a href="https://www.linkedin.com/in/federico-albano-consulente/" target="_blank" aria-label="LinkedIn">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
-      </a>
-      <a href="https://www.facebook.com/federico.albano.1848/" target="_blank" aria-label="Facebook">
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook" />
-      </a>
-      <a href="https://www.tiktok.com/@federicoalbanoconsulente?is_from_webapp=1&sender_device=pc" target="_blank" aria-label="TikTok">
-        <img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" alt="TikTok" />
-      </a>
-      <a href="https://wa.me/393475121522" target="_blank" aria-label="WhatsApp">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" />
-      </a>
+    <div class="social-icons d-flex justify-content-center mb-5" data-aos="zoom-in">
+      <a href="https://www.instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+      <a href="https://www.linkedin.com/in/federico-albano-consulente/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn"></a>
+      <a href="https://www.facebook.com/federico.albano.1848/"><img src="https://cdn-icons-png.flaticon.com/512/145/145802.png" alt="Facebook"></a>
+      <a href="https://www.tiktok.com/@federicoalbanoconsulente"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046125.png" alt="TikTok"></a>
+      <a href="https://wa.me/393475121522"><img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp"></a>
     </div>
 
-    <!-- Mappa e Calendly affiancati -->
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div id="map"></div>
-      </div>
-      <div class="col-md-6 d-flex flex-column align-items-center">
-        <h2 class="mb-3" style="color:#0c3940;">Prenota la tua consulenza</h2>
-        <div class="calendly-inline-widget"
-     data-url="https://calendly.com/federico-albano-2004/consulenza"
-     style="min-width:320px;height:700px;"></div>
+<!-- Mappa e Calendly -->
+<div class="row g-4 align-items-stretch">
+  <div class="col-md-6" data-aos="fade-right">
+    <div class="map-container" style="height: 100%; min-height: 700px;">
+      <div id="map" style="height: 100%; width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(12,57,64,0.3);"></div>
+    </div>
+  </div>
+  <div class="col-md-6 d-flex flex-column align-items-center" data-aos="fade-left" style="min-height: 700px;">
+    <h2 class="mb-3 section-title">Prenota la tua consulenza</h2>
+    <div class="calendly-inline-widget"
+      data-url="https://calendly.com/federico-albano-2004/consulenza"
+      style="min-width:320px; height: 100%;"></div>
+  </div>
+</div>
 
+
+  
+</section>
+<section class="contact-extra-boxes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" data-aos="fade-up">
+        <div class="contact-box">
+          <h4>🕘 Orari Consulenze</h4>
+          <p>Lunedì - Venerdì: 9:00 - 13:00 / 14:00 - 19:00</p>
+          <p>Sabato solo su appuntamento</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-box">
+          <h4>📅 Disponibilità</h4>
+          <p>Appuntamenti in presenza e online (Zoom, Meet, WhatsApp)</p>
+          <p>Conferma immediata via email</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="contact-box">
+          <h4>🔍 Metodo di lavoro</h4>
+          <p>Analisi gratuita, consulenza personalizzata e assistenza continua fino all’erogazione del finanziamento.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4 cta-buttons" data-aos="zoom-in">
+      <a href="https://wa.me/393475121522" class="btn btn-success btn-lg">📲 Scrivimi su WhatsApp</a>
+      <a href="#map" class="btn btn-outline-primary btn-lg">📍 Trova lo Studio</a>
+    </div>
+  </div>
+</section>
+<!-- Separatore -->
+<div class="divider" data-aos="fade-up"></div>
+
+<!-- Sezione motivazionale -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center section-title mb-4" data-aos="fade-up">Perché contattarmi?</h2>
+    <div class="row text-center">
+      <div class="col-md-4 mb-4" data-aos="zoom-in">
+        <img src="https://cdn-icons-png.flaticon.com/512/1087/1087922.png" width="80">
+        <h5 class="mt-3">Consulenze personalizzate</h5>
+        <p>Soluzioni su misura per ogni esigenza di prestito o mutuo.</p>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="100">
+        <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" width="80">
+        <h5 class="mt-3">Esperienza certificata</h5>
+        <p>Oltre 10 anni nel settore finanziario, con risultati concreti.</p>
+      </div>
+      <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+        <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" width="80">
+        <h5 class="mt-3">Supporto continuo</h5>
+        <p>Ti seguo in ogni fase: dalla richiesta al post-erogazione.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sezione FAQ -->
+<section class="faq py-5">
+  <div class="container">
+    <h2 class="text-center section-title mb-4" data-aos="fade-up">Domande frequenti</h2>
+    <div class="accordion" id="faqAccordion" data-aos="fade-up">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq1"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">Quanto costa la consulenza?</button></h2>
+        <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">La prima consulenza è sempre gratuita e senza impegno.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">Posso portare i documenti via WhatsApp?</button></h2>
+        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Sì, puoi inviarli comodamente in formato PDF o foto su WhatsApp.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="faq3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">In quanto tempo ricevo una risposta?</button></h2>
+        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Entro 24 ore lavorative riceverai un primo feedback personalizzato.</div></div>
       </div>
     </div>
   </div>
@@ -170,14 +265,21 @@
 <!-- Footer -->
 <footer>
   <div class="container">
-    <p>© 2025 Federico Albano - Consulente del Credito</p>
+    <p class="mb-3">© 2025 Federico Albano - Consulente del Credito</p>
+    <div class="footer-links">
+      <a href="tel:+393475121522">Chiama ora</a> |
+      <a href="mailto:federico.albano@kiron.it">Scrivimi</a> |
+      <a href="https://wa.me/393475121522">WhatsApp</a>
+    </div>
   </div>
 </footer>
 
-<!-- Script Bootstrap -->
+<!-- Script Bootstrap, Maps, Calendly, AOS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Script Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL570AU3N8pMNRj-yyQ2IfOp53q7bc2wo&callback=initMap" async defer></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
   function initMap() {
     const location = { lat: 38.1032913, lng: 15.642317 };
@@ -191,25 +293,6 @@
       title: "Federico Albano - Consulente del Credito"
     });
   }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL570AU3N8pMNRj-yyQ2IfOp53q7bc2wo&callback=initMap" async defer></script>
-
-<!-- Script Calendly loader -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>
-  window.addEventListener("message", function(e) {
-    if (e.data.event && e.data.event.indexOf("calendly") !== -1) {
-      const loader = document.getElementById("calendly-loader");
-      const widget = document.querySelector(".calendly-inline-widget");
-      if (loader && widget) {
-        loader.style.display = "none";
-        widget.style.display = "block";
-        setTimeout(() => {
-          widget.style.opacity = 1;
-        }, 50);
-      }
-    }
-  });
 </script>
 </body>
 </html>
