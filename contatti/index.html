@@ -158,12 +158,10 @@
       </div>
       <div class="col-md-6 d-flex flex-column align-items-center">
         <h2 class="mb-3" style="color:#0c3940;">Prenota la tua consulenza</h2>
-        <div id="calendly-loader">
-          <div class="loader"></div>
-        </div>
         <div class="calendly-inline-widget"
-             data-url="https://calendly.com/federico-albano-2004/consulenza"
-             style="min-width:320px;height:700px;display:none;opacity:0;transition:opacity 0.5s;"></div>
+     data-url="https://calendly.com/federico-albano-2004/consulenza"
+     style="min-width:320px;height:700px;"></div>
+
       </div>
     </div>
   </div>
@@ -196,22 +194,5 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAL570AU3N8pMNRj-yyQ2IfOp53q7bc2wo&callback=initMap" async defer></script>
 
-<!-- Script Calendly loader -->
-<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-<script>
-  window.addEventListener("message", function(e) {
-    if (e.data.event && e.data.event.indexOf("calendly") !== -1) {
-      const loader = document.getElementById("calendly-loader");
-      const widget = document.querySelector(".calendly-inline-widget");
-      if (loader && widget) {
-        loader.style.display = "none";
-        widget.style.display = "block";
-        setTimeout(() => {
-          widget.style.opacity = 1;
-        }, 50);
-      }
-    }
-  });
-</script>
 </body>
 </html>
