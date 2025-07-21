@@ -59,6 +59,18 @@
       width: 100%;
       left: 0;
     }
+    
+
+    .hero {
+      background: url('/img/videohero.mp4' ) center/cover no-repeat;
+      padding-top: 70px;
+      color: white;
+      height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    }
 
     .hero h1 {
       font-size: 3rem;
@@ -105,49 +117,50 @@
 
 <body>
 
-  <!-- NAVBAR ORIGINALE -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
-    <div class="container">
-      <img src="/img/logo.ico" class="rounded-circle me-2" alt="Logo Federico Albano" width="40" height="40" />
-      <a class="navbar-brand fw-bold" href="/">Federico Albano</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/chi-sono/">Chi sono</a></li>
-          <li class="nav-item"><a class="nav-link" href="/servizi/">Servizi</a></li>
-          <li class="nav-item"><a class="nav-link" href="/simulatore/">Simulatore</a></li>
-          <li class="nav-item"><a class="nav-link" href="/recensioni/">Recensioni</a></li>
-          <li class="nav-item"><a class="nav-link" href="/contatti/">Contatti</a></li>
-        </ul>
-      </div>
+ <!-- NAVBAR ORIGINALE -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+  <div class="container">
+    <img src="/img/logo.ico" class="rounded-circle me-2" alt="Logo Federico Albano" width="40" height="40" />
+    <a class="navbar-brand fw-bold" href="/">Federico Albano</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/chi-sono/">Chi sono</a></li>
+        <li class="nav-item"><a class="nav-link" href="/servizi/">Servizi</a></li>
+        <li class="nav-item"><a class="nav-link" href="/simulatore/">Simulatore</a></li>
+        <li class="nav-item"><a class="nav-link" href="/recensioni/">Recensioni</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contatti/">Contatti</a></li>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" style="position: relative; height: 80vh; overflow: hidden; color: white; padding-top: 70px;">
+<!-- HERO -->
+<section class="hero" style="position: relative; height: 80vh; overflow: hidden; color: white; padding-top: 70px;">
 
-    <!-- Video di sfondo -->
-    <video autoplay muted loop playsinline
-      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
-      <source src="/img/videohero.mp4" type="video/mp4">
-      Il tuo browser non supporta il video.
-    </video>
+  <!-- Video di sfondo -->
+  <video autoplay muted loop playsinline
+  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; z-index: 0;">
+    <source src="/img/videohero.mp4" type="video/mp4">
+    Il tuo browser non supporta il video.
+  </video>
+
+  <!-- Overlay scuro per leggibilità -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 75%;
+              background-color: rgba(0, 0, 0, 0.4); z-index: 1;"></div>
+
+  <!-- Contenuto centrato -->
+  <div class="container text-center" style="position: relative; z-index: 2; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);">
+    <h1 class="display-4 fw-bold">Consulente per Mutui</h1>
+    <p class="lead">Prestiti, mutui e consolidamento debiti a Reggio Calabria</p>
+    <a href="/contatti/" class="btn btn-primary btn-lg mt-3">Contattami ora</a>
+  </div>
+</section>
+
   
-    <!-- Overlay scuro per leggibilità -->
-    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-                background-color: rgba(0, 0, 0, 0.4); z-index: 1;"></div>
-  
-    <!-- Contenuto centrato -->
-    <div class="container text-center"
-         style="position: relative; z-index: 2; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7); padding-top: 30px;">
-      <h1 class="display-4 fw-bold">Consulente per Mutui</h1>
-      <p class="lead">Prestiti, mutui e consolidamento debiti a Reggio Calabria</p>
-      <a href="/contatti/" class="btn btn-primary btn-lg mt-3">Contattami ora</a>
-    </div>
-  </section>
   
   <!-- CHI SONO -->
 <section class="py-5" style="background-color: #ffffff;" data-aos="fade-up">

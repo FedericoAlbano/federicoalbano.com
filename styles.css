@@ -314,13 +314,3 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(12,57,64,0.3);
   }
-
-  .hero {
-    padding-top: 70px; /* lascia spazio sotto la navbar */
-    height: calc(80vh - 70px); /* altezza totale meno navbar */
-    position: relative;
-    overflow: hidden;
-    color: white;
-  }
-
-  
