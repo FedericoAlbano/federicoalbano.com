@@ -314,3 +314,11 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(12,57,64,0.3);
   }
+
+  .hero {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+    color: white;
+    margin-top: 70px; /* o padding-top se preferisci far scendere solo il testo */
+  }
