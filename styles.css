@@ -316,9 +316,11 @@ footer {
   }
 
   .hero {
+    padding-top: 70px; /* lascia spazio sotto la navbar */
+    height: calc(80vh - 70px); /* altezza totale meno navbar */
     position: relative;
-    height: 80vh;
     overflow: hidden;
     color: white;
-    margin-top: 70px; /* o padding-top se preferisci far scendere solo il testo */
   }
+
+  
