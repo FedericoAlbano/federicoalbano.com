@@ -61,7 +61,7 @@
     }
 
     .hero {
-      background: url('/img/famiglia.jpg') center/cover no-repeat;
+      background: url('/img/videohero.mp4' ) center/cover no-repeat;
       color: white;
       height: 80vh;
       display: flex;
@@ -137,14 +137,27 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero d-flex align-items-center justify-content-center" style="height: 90vh; position: relative; background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('/img/famiglia.jpg') center/cover no-repeat;">
-    <div class="container text-center text-white">
-      <h1 class="display-4 fw-bold" data-aos="fade-down" data-aos-delay="100">Prestiti e Mutui Personalizzati</h1>
-      <p class="lead mt-3" data-aos="fade-up" data-aos-delay="300">Consulenza su misura a Reggio Calabria</p>
-      <p class="mt-2" data-aos="fade-up" data-aos-delay="600">Professionalità, chiarezza e supporto completo dalla prima richiesta alla firma finale.</p>
-      <a href="/contatti/" class="btn btn-primary btn-lg mt-4" data-aos="zoom-in" data-aos-delay="800">Richiedi una consulenza gratuita</a>
+  <section class="hero" style="position: relative; height: 80vh; overflow: hidden; color: white;">
+
+    <!-- Video di sfondo -->
+    <video autoplay muted loop playsinline
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+      <source src="/federicoalbano.com/img/videohero.mp4" type="video/mp4">
+      Il tuo browser non supporta il video.
+    </video>
+  
+    <!-- Overlay scuro per leggibilità -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 75%;
+                background-color: rgba(0, 0, 0, 0.4); z-index: 1;"></div>
+  
+    <!-- Contenuto centrato -->
+    <div class="container text-center" style="position: relative; z-index: 2; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);">
+      <h1 class="display-4 fw-bold">Consulenza Personalizzata</h1>
+      <p class="lead">Prestiti, mutui e consolidamento a Reggio Calabria</p>
+      <a href="/contatti/" class="btn btn-primary btn-lg mt-3">Contattami ora</a>
     </div>
   </section>
+  
   
   <!-- CHI SONO -->
 <section class="py-5" style="background-color: #ffffff;" data-aos="fade-up">
@@ -202,7 +215,7 @@
       <div class="col-md-4" data-aos="zoom-in">
         <a href="/servizi/" style="text-decoration: none; color: inherit;">
           <div class="card shadow-sm h-100">
-            <img src="/img/mutuo.jpg" class="card-img-top" alt="Mutui">
+            <img src="/img/mutuo.jpg" alt="Mutuo per acquisto casa a Reggio Calabria" class="card-img-top" loading="lazy">
             <div class="card-body">
               <h5 class="card-title">Mutui</h5>
               <p class="card-text">Scegli il mutuo migliore per la tua nuova casa.</p>
@@ -215,7 +228,7 @@
       <div class="col-md-4" data-aos="zoom-in">
         <a href="/servizi/prestiti/" style="text-decoration: none; color: inherit;">
           <div class="card shadow-sm h-100">
-            <img src="/img/prestito.jpg" class="card-img-top" alt="Prestiti">
+            <img src="/img/prestito.jpg" class="card-img-top" alt="Prestiti" loading="lazy">
             <div class="card-body">
               <h5 class="card-title">Prestiti</h5>
               <p class="card-text">Soluzioni flessibili per ogni esigenza personale.</p>
@@ -228,7 +241,7 @@
       <div class="col-md-4" data-aos="zoom-in">
         <a href="/servizi/consolidamento/" style="text-decoration: none; color: inherit;">
           <div class="card shadow-sm h-100">
-            <img src="/img/consolidamento.jpg" class="card-img-top" alt="Consolidamento debiti">
+            <img src="/img/consolidamento.jpg" class="card-img-top" alt="Consolidamento debiti a Reggio Calabria" loading="lazy">
             <div class="card-body">
               <h5 class="card-title">Consolidamento</h5>
               <p class="card-text">Un'unica rata per semplificare i tuoi impegni.</p>
@@ -241,7 +254,6 @@
   </div>
 </section>
 
-  </section>
   <!-- STATISTICHE -->
   <section class="py-5">
     <div class="container">
@@ -260,7 +272,7 @@
         </div>
         <div class="col-md-4">
           <div class="stat-box">
-            <h3>10+</h3>
+            <h3>5+</h3>
             <p>Anni di esperienza</p>
           </div>
         </div>
