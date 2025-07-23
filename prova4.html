@@ -1,20 +1,66 @@
-<!-- Indicazione per scrollare -->
+<!-- POPUP Guida Mutuo -->
+<style>
+  #popup-guida {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    border: 2px solid #00704A;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    max-width: 300px;
+    z-index: 9999;
+    font-family: sans-serif;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    display: none;
+  }
 
-<!DOCTYPE html>
-<html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prova 4</title>
+  #popup-guida.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
 
-    <section>
-
-<div class="scroll-indicator" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 2;">
-  <div style="text-align: center; color: rgb(0, 0, 0); font-size: 14px; opacity: 0.8;">Scorri</div>
-  <div class="arrow-down" style="margin-top: 5px;">
-    <span style="display: block; width: 24px; height: 24px; border-left: 2px solid white; border-bottom: 2px solid white;
-                 transform: rotate(45deg); animation: bounce 2s infinite;"></span>
-  </div>
+<div id="popup-guida">
+  <h3 style="margin-top: 0; color: #00704A;">📘 Scarica la guida al mutuo</h3>
+  <p style="font-size: 14px; margin-bottom: 10px;">
+    Una guida gratuita per aiutarti a evitare errori e capire meglio il mutuo.
+  </p>
+  <img src="/qrcode.png" alt="QR Code Guida Mutuo" style="width: 100px; display: block; margin: 0 auto 10px;">
+  <a href="GuidaAlMutuo_FedericoAlbano.pdf" target="_blank" style="
+    display: block;
+    text-align: center;
+    background: #00704A;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  ">
+    📥 Scarica ora
+  </a>
+  <button onclick="document.getElementById('popup-guida').style.display='none'" style="
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+  ">Chiudi</button>
 </div>
 
-</section>
+<script>
+  // Mostra il popup con animazione fade-in dopo 5 secondi
+  window.onload = function () {
+    setTimeout(function () {
+      const popup = document.getElementById('popup-guida');
+      popup.style.display = 'block';
+      setTimeout(() => popup.classList.add('show'), 50);
+    }, 5000);
+  }
+</script>

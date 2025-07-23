@@ -188,6 +188,66 @@
     });
   });
 </script>
+<!-- STILE popup -->
+<style>
+  #popup-guida {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: white;
+    border: 2px solid #00704A;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    max-width: 300px;
+    z-index: 9999;
+    font-family: sans-serif;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    display: none;
+  }
+
+  #popup-guida.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<!-- CONTENUTO popup -->
+<div id="popup-guida">
+  <h3 style="margin-top: 0; color: #00704A;">📘 Scarica la guida al mutuo</h3>
+  <p style="font-size: 14px; margin-bottom: 10px;">
+    Una guida gratuita per aiutarti a evitare errori e capire meglio il mutuo.
+  </p>
+  <img src="qrcode.png" alt="QR Code Guida Mutuo" style="width: 100px; display: block; margin: 0 auto 10px;">
+  <a href="GuidaAlMutuo_FedericoAlbano.pdf" target="_blank" style="
+    display: block;
+    text-align: center;
+    background: #00704A;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  ">
+    📥 Scarica ora
+  </a>
+  <button onclick="document.getElementById('popup-guida').style.display='none'" style="
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+  ">Chiudi</button>
+</div>
+
+<!-- COLLEGAMENTO AL JS -->
+<script src="/js/popup.js"></script>
+
 <body>
 
  <!-- NAVBAR ORIGINALE -->
