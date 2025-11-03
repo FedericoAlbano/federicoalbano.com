@@ -93,8 +93,8 @@ function calcolaRata() {
       prestito: 8,
       consolidamento: 5,
       mutuo: {
-        fisso: 3,
-        variabile: 3.5
+        fisso: 3.5,
+        variabile: 3.2
       }
     };
 
