@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✅ NOINDEX: la pagina NON verrà indicizzata da Google -->
+  <meta name="robots" content="noindex, nofollow" />
+  <title>I Foscar 2026 – I Premi del Disagio</title>
+
+  <!-- Google Fonts: Playfair Display (titoli) + DM Sans (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────
+       CSS VARIABLES & RESET
+    ───────────────────────────────────────────── */
+    :root {
+      --bg:          #0a0a0a;
+      --surface:     #111111;
+      --surface2:    #1a1a1a;
+      --border:      rgba(197,160,75,0.18);
+      --gold:        #c5a04b;
+      --gold-light:  #e8c96e;
+      --gold-dim:    rgba(197,160,75,0.12);
+      --text:        #e8e0d0;
+      --text-muted:  #8a8070;
+      --serif:       'Playfair Display', Georgia, serif;
+      --sans:        'DM Sans', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─────────────────────────────────────────────
+       NOISE / GRAIN OVERLAY
+    ───────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 180px;
+    }
+
+    /* ─────────────────────────────────────────────
+       GOLDEN HORIZONTAL RULE
+    ───────────────────────────────────────────── */
+    .gold-rule {
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto;
+    }
+
+    /* ─────────────────────────────────────────────
+       FADE-IN ANIMATION (scroll reveal)
+    ───────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─────────────────────────────────────────────
+       ══════════  HERO  ══════════
+    ───────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      overflow: hidden;
+    }
+
+    /* Radial glow background */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 40%, rgba(197,160,75,.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 50% 10%, rgba(197,160,75,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Decorative corner lines */
+    .hero-frame {
+      position: absolute;
+      inset: 2rem;
+      pointer-events: none;
+    }
+    .hero-frame::before,
+    .hero-frame::after {
+      content: '';
+      position: absolute;
+      width: 60px; height: 60px;
+      border-color: var(--gold);
+      border-style: solid;
+      opacity: .35;
+    }
+    .hero-frame::before {
+      top: 0; left: 0;
+      border-width: 1px 0 0 1px;
+    }
+    .hero-frame::after {
+      bottom: 0; right: 0;
+      border-width: 0 1px 1px 0;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      animation: fadeDown .9s ease both;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 9vw, 7rem);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -.02em;
+      color: #fff;
+      animation: fadeDown 1s ease .15s both;
+    }
+
+    .hero-title .gold-text {
+      color: var(--gold-light);
+      font-style: italic;
+      display: block;
+    }
+
+    .hero-subtitle {
+      margin-top: 1.6rem;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: var(--text-muted);
+      font-style: italic;
+      max-width: 520px;
+      animation: fadeDown 1s ease .3s both;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2.5rem auto 0;
+      animation: fadeDown 1s ease .45s both;
+    }
+    .hero-divider span { color: var(--gold); font-size: 1.4rem; }
+    .hero-divider .line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .hero-divider .line:last-child {
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* ─────────────────────────────────────────────
+       SHARED SECTION WRAPPER
+    ───────────────────────────────────────────── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+    }
+
+    .section-label {
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .8rem;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    /* ─────────────────────────────────────────────
+       ══════════  INTRO  ══════════
+    ───────────────────────────────────────────── */
+    .intro {
+      border-top: 1px solid var(--border);
+    }
+
+    .intro-inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .intro-inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    .intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--gold-dim);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: .4rem 1rem;
+      font-size: .75rem;
+      color: var(--gold-light);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .intro-text {
+      color: var(--text);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    .intro-text + .intro-text { margin-top: 1rem; }
+
+    .intro-text strong { color: var(--gold-light); font-weight: 500; }
+
+    .intro-callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+      padding: 1.8rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .intro-callout cite {
+      display: block;
+      margin-top: .8rem;
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ─────────────────────────────────────────────
+       ══════════  PALMARES  ══════════
+    ───────────────────────────────────────────── */
+    .palmares {
+      border-top: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(197,160,75,.05) 0%, transparent 60%);
+    }
+
+    .palmares-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .palmares-header .section-title::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold);
+      margin: 1rem auto 0;
+    }
+
+    /* ── Cards grid ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 600px) {
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 900px) {
+      .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 1200px) {
+      .cards-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .9rem;
+      overflow: hidden;
+      transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(197,160,75,.07) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(197,160,75,.5);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(197,160,75,.1);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-corner {
+      position: absolute;
+      top: 0; right: 0;
+      width: 40px; height: 40px;
+      border-left: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      border-radius: 0 0 0 8px;
+      background: var(--surface2);
+      display: grid;
+      place-items: center;
+      font-size: .6rem;
+      color: var(--gold);
+      letter-spacing: .1em;
+    }
+
+    .card-emoji {
+      font-size: 2.4rem;
+      line-height: 1;
+      filter: grayscale(.2);
+    }
+
+    .card-award {
+      font-family: var(--sans);
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .card-title {
+      font-family: var(--serif);
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+    }
+
+    .card-winner {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 900;
+      color: var(--gold-light);
+      letter-spacing: -.01em;
+      line-height: 1.1;
+    }
+
+    .card-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .card-desc {
+      font-size: .9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    /* ─────────────────────────────────────────────
+       ══════════  FOOTER  ══════════
+    ───────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3.5rem 1.5rem;
+      background: var(--surface);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 900;
+      font-style: italic;
+      color: var(--gold-light);
+      letter-spacing: -.02em;
+      margin-bottom: .5rem;
+    }
+
+    .footer-logo span { color: var(--text-muted); font-style: normal; font-size: .9rem; }
+
+    .footer-text {
+      font-size: .9rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 1.2rem auto 0;
+      line-height: 1.7;
+    }
+
+    .footer-text strong { color: var(--gold); }
+
+    .footer-copy {
+      margin-top: 2rem;
+      font-size: .7rem;
+      color: #3a3530;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────────
+       SCROLL INDICATOR (hero)
+    ───────────────────────────────────────────── */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      animation: fadeDown 1s ease .8s both;
+    }
+    .scroll-indicator span {
+      font-size: .6rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .scroll-mouse {
+      width: 22px; height: 34px;
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      display: grid;
+      place-items: start center;
+      padding-top: 6px;
+    }
+    .scroll-mouse::before {
+      content: '';
+      width: 2px; height: 6px;
+      background: var(--gold);
+      border-radius: 99px;
+      animation: scrollPulse 2s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 1; transform: translateY(0); }
+      50%      { opacity: .3; transform: translateY(4px); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ═════════════════════════════════════════ -->
+  <header class="hero">
+    <div class="hero-frame" aria-hidden="true"></div>
+
+    <!-- ✏️ MODIFICA: eyebrow sopra il titolo -->
+    <p class="hero-eyebrow">Cerimonia Ufficiale dei Premi • Stagione 2025/26</p>
+
+    <h1 class="hero-title">
+      I Vincitori dei
+      <!-- ✏️ MODIFICA: il nome dell'edizione -->
+      <span class="gold-text">Foscar 2026</span>
+    </h1>
+
+    <!-- ✏️ MODIFICA: sottotitolo ironico -->
+    <p class="hero-subtitle">
+      "La classifica premia i forti. Noi premiamo il disagio."
+    </p>
+
+    <div class="hero-divider" aria-hidden="true">
+      <div class="line"></div>
+      <span>✦</span>
+      <div class="line"></div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-mouse"></div>
+      <span>Scorri</span>
+    </div>
+  </header>
+
+
+  <!-- ════════════════════════════════════════
+       INTRO
+  ═════════════════════════════════════════ -->
+  <section class="intro" aria-labelledby="intro-heading">
+    <div class="section">
+      <div class="intro-inner">
+
+        <div class="reveal">
+          <div class="intro-badge">
+            🏆 Un doveroso preambolo
+          </div>
+          <h2 class="section-title" id="intro-heading">Prima di tutto...</h2>
+          <p class="intro-text">
+            <!-- ✏️ MODIFICA: nome del vincitore del campionato -->
+            Un applauso formale, sentito e vagamente invidioso, al grande
+            <strong>RyanKentFC</strong> — campione indiscusso della nostra lega.
+            Bravo. Davvero. Complimenti. Speriamo si goda questo momento,
+            perché d'ora in poi parliamo di cose più interessanti.
+          </p>
+          <p class="intro-text" style="margin-top:1rem">
+            Parliamo dei <em>veri</em> protagonisti della stagione:
+            quelli che hanno trasformato ogni giornata in un'opera d'arte del caos,
+            ogni scelta in una filosofia esistenziale, ogni roster in un esperimento sociale.
+            A loro, i <strong>Foscar</strong>.
+          </p>
+        </div>
+
+        <!-- ✏️ MODIFICA: citazione/frase ironica a piacere -->
+        <blockquote class="intro-callout reveal">
+          "In un mondo in cui tutti vogliono vincere, ci vuole coraggio
+          per perdere con tale costanza, tale stile, tale imperterrita dignità."
+          <cite>— Il Presidente dei Foscar, ovviamente</cite>
+        </blockquote>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       PALMARES (Le Card dei Premi)
+  ═════════════════════════════════════════ -->
+  <section class="palmares" aria-labelledby="palmares-heading">
+    <div class="section">
+
+      <div class="palmares-header reveal">
+        <span class="section-label">✦ Il Palmarès Ufficiale ✦</span>
+        <h2 class="section-title" id="palmares-heading">I Premi della Stagione</h2>
+        <p style="color: var(--text-muted); max-width: 520px; margin: 0 auto; font-size:.95rem;">
+          Giudicati da una giuria di esperti (ovvero noi) con criteri rigorosi (ovvero nessuno).
+        </p>
+      </div>
+
+      <div class="cards-grid">
+
+        <!-- ══ CARD 01 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">01</div>
+          <div class="card-emoji">😭</div>
+          <span class="card-award">Premio Sentimentale</span>
+          <h3 class="card-title">Piangina D'Oro</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver trasformato ogni aggiornamento del tabellino in un evento traumatico
+            e aver reso il gruppo WhatsApp un servizio di ascolto psicologico non autorizzato.
+          </p>
+        </article>
+
+        <!-- ══ CARD 02 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">02</div>
+          <div class="card-emoji">🍀</div>
+          <span class="card-award">Premio Fortuna</span>
+          <h3 class="card-title">Culo Sfondato</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver vinto giornate in modi che sfidano ogni logica del fantacalcio,
+            della statistica e, probabilmente, della fisica.
+          </p>
+        </article>
+
+        <!-- ══ CARD 03 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">03</div>
+          <div class="card-emoji">🛏️</div>
+          <span class="card-award">Premio Difensivo</span>
+          <h3 class="card-title">Squadra Materasso Sfondato</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver schierato una difesa così generosa da far sentire gli attaccanti avversari
+            a casa propria. Ogni domenica. Senza eccezioni.
+          </p>
+        </article>
+
+        <!-- ══ CARD 04 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">04</div>
+          <div class="card-emoji">🏥</div>
+          <span class="card-award">Premio Infermeria</span>
+          <h3 class="card-title">Tre Tubi</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver collezionato più infortuni che presenze effettive,
+            trasformando il proprio reparto medico nel reparto più affollato della lega.
+          </p>
+        </article>
+
+        <!-- ══ CARD 05 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">05</div>
+          <div class="card-emoji">🦖</div>
+          <span class="card-award">Premio Economia</span>
+          <h3 class="card-title">T-Rex — Il Braccino Corto</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver partecipato all'asta con l'entusiasmo di un collezionista d'arte
+            e le ambizioni di budget di un cinepanettone.
+          </p>
+        </article>
+
+        <!-- ══ CARD 06 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">06</div>
+          <div class="card-emoji">🖥️</div>
+          <span class="card-award">Premio Tecnologico</span>
+          <h3 class="card-title">Sir Do Not Redeem Sir</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver dimostrato che l'intelligenza artificiale, usata nel modo sbagliato,
+            può davvero fare miracoli — negativi.
+          </p>
+        </article>
+
+        <!-- ══ CARD 07 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">07</div>
+          <div class="card-emoji">🤦‍♂️</div>
+          <span class="card-award">Premio Speciale</span>
+          <h3 class="card-title">Mongol0ide</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Premio alla carriera. Nessuna ulteriore spiegazione è necessaria.
+            Chi è nella lega sa già.
+          </p>
+        </article>
+
+        <!-- ══ CARD 08 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">08</div>
+          <div class="card-emoji">💩</div>
+          <span class="card-award">Premio Mercato</span>
+          <h3 class="card-title">Mani di Merda</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per aver toccato ogni calciatore e averlo immediatamente condannato a una stagione
+            di flop, panchine e infortuni inesplicabili. Un superpotere, in negativo.
+          </p>
+        </article>
+
+        <!-- ══ CARD 09 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">09</div>
+          <div class="card-emoji">👻</div>
+          <span class="card-award">Premio Presenza</span>
+          <h3 class="card-title">Chi L'ha Visto?</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per il calciatore che ha trascorso la stagione nel limbo tra titolare e
+            fantasma, comparendo nelle formazioni con la frequenza di un avvistamento UFO.
+          </p>
+        </article>
+
+        <!-- ══ CARD 10 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">10</div>
+          <div class="card-emoji">🐐</div>
+          <span class="card-award">Premio Eccellenza</span>
+          <h3 class="card-title">Goat</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Il premio più ambito. Non per il migliore, ma per il più memorabile
+            nella sua categoria di straordinaria inadeguatezza. Greatest Of All Time — nel disagio.
+          </p>
+        </article>
+
+        <!-- ══ CARD 11 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">11</div>
+          <div class="card-emoji">📦</div>
+          <span class="card-award">Premio Delusione</span>
+          <h3 class="card-title">Pacco</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Per il calciatore più sopravvalutato della stagione: pubblicità ingannevole,
+            confezione accattivante, contenuto tristemente deludente. Reso impossibile.
+          </p>
+        </article>
+
+        <!-- ══ CARD 12 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">12</div>
+          <div class="card-emoji">🩸</div>
+          <span class="card-award">Premio Budget</span>
+          <h3 class="card-title">Sanguisuga del Budget</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Il calciatore più overpagato della lega. Ha succhiato crediti preziosi all'asta
+            e restituito in cambio voti da comparsa, presenze da fantasma e un sorriso beffardo.
+          </p>
+        </article>
+
+        <!-- ══ CARD 13 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">13</div>
+          <div class="card-emoji">💎</div>
+          <span class="card-award">Premio Rivelazione</span>
+          <h3 class="card-title">Pescata</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Il gioiello low-cost della stagione. Preso per pochi crediti con aspettative
+            zero, ha consegnato rendimento da primo piano. Il sogno del fantallenatore.
+          </p>
+        </article>
+
+        <!-- ══ CARD 14 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">14</div>
+          <div class="card-emoji">🏥</div>
+          <span class="card-award">Premio Fisico</span>
+          <h3 class="card-title">L'Uomo di Vetro</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Il Rottame dell'Anno. Per una fragilità fisica così costante e sistematica
+            da far sospettare che il suo fisioterapista sia il vero MVP della squadra.
+          </p>
+        </article>
+
+        <!-- ══ CARD 15 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">15</div>
+          <div class="card-emoji">🎇</div>
+          <span class="card-award">Premio Promesse</span>
+          <h3 class="card-title">Fuoco di Paglia — L'Illusionista</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Brillante nelle prime giornate, scomparso nel resto della stagione.
+            Ha acceso entusiasmi, alimentato speranze, e poi si è spento come una candela
+            sotto la pioggia. Chapeau per la teatralità.
+          </p>
+        </article>
+
+        <!-- ══ CARD 16 ══════════════════════════ -->
+        <article class="card reveal">
+          <div class="card-corner">16</div>
+          <div class="card-emoji">😤</div>
+          <span class="card-award">Premio Panchina</span>
+          <h3 class="card-title">Rimpianto Eterno — Il Panchinaro Goleador</h3>
+          <!-- ✏️ MODIFICA: nome del vincitore -->
+          <p class="card-winner">Nome Cognome</p>
+          <div class="card-divider"></div>
+          <!-- ✏️ MODIFICA: motivazione del premio -->
+          <p class="card-desc">
+            Il calciatore lasciato sistematicamente in panchina che, puntuale come una
+            punizione divina, segnava proprio quando non era schierato. L'universo ride.
+          </p>
+        </article>
+
+      </div><!-- /cards-grid -->
+    </div><!-- /section -->
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ═════════════════════════════════════════ -->
+  <footer class="footer">
+    <p class="footer-logo">
+      Foscar <span>2026</span>
+    </p>
+    <span class="gold-rule"></span>
+    <!-- ✏️ MODIFICA: testo del footer -->
+    <p class="footer-text">
+      L'urna ha parlato. Ci vediamo ad agosto per la prossima asta.<br />
+      <strong>Preparate i portafogli.</strong>
+    </p>
+    <p class="footer-copy">
+      © Foscar 2026 — Stagione 2025/26 — Tutti i disastri sono riservati
+    </p>
+  </footer>
+
+
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT: Scroll Reveal
+  ═════════════════════════════════════════ -->
+  <script>
+    // Intersection Observer per le animazioni di reveal allo scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry, i) => {
+          if (entry.isIntersecting) {
+            // Stagger leggero tra gli elementi della stessa sezione
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, i * 80);
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
