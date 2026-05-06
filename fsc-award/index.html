@@ -95,6 +95,23 @@
       padding: 3rem 1.5rem;
       overflow: hidden;
     }
+    .hero-trophy {
+  margin-top: 2rem;
+  animation: floatTrophy 3.5s ease-in-out infinite, fadeDown 1s ease .5s both;
+  filter: drop-shadow(0 0 24px rgba(197,160,75,.45));
+  width: clamp(80px, 15vw, 140px);
+}
+
+.hero-trophy img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes floatTrophy {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
 
     /* Radial glow background */
     .hero::after {
@@ -166,6 +183,48 @@
       max-width: 520px;
       animation: fadeDown 1s ease .3s both;
     }
+
+    /* ── Hero title + statuette affiancate ── */
+.hero-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  animation: fadeDown 1s ease .15s both;
+}
+
+.hero-trophy {
+  width: clamp(60px, 10vw, 120px);
+  height: auto;
+  filter: drop-shadow(0 0 18px rgba(197,160,75,.5));
+  animation: floatTrophy 3.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.hero-trophy--mirror {
+  transform: scaleX(-1);
+}
+
+/* Su mobile nasconde la statuetta di destra per non affollare */
+@media (max-width: 480px) {
+  .hero-trophy--mirror { display: none; }
+  .hero-trophy { width: clamp(45px, 12vw, 70px); }
+}
+
+@keyframes floatTrophy {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* La seconda statuetta mantiene il mirror anche durante il float */
+.hero-trophy--mirror {
+  animation: floatTrophyMirror 3.5s ease-in-out infinite;
+}
+
+@keyframes floatTrophyMirror {
+  0%, 100% { transform: scaleX(-1) translateY(0); }
+  50%       { transform: scaleX(-1) translateY(-10px); }
+}
 
     .hero-divider {
       display: flex;
@@ -507,11 +566,23 @@
     <!-- ✏️ MODIFICA: eyebrow sopra il titolo -->
     <p class="hero-eyebrow">Cerimonia Ufficiale dei Premi • Stagione 2025/26</p>
 
-    <h1 class="hero-title">
-      I Vincitori dei
-      <!-- ✏️ MODIFICA: il nome dell'edizione -->
-      <span class="gold-text">Foscar 2026</span>
-    </h1>
+    <div class="hero-title-wrapper">
+  <img
+    class="hero-trophy"
+    src="img/statuetta.png"
+    alt="Statuetta dei Foscar"
+  />
+  <h1 class="hero-title">
+    I Vincitori dei
+    <span class="gold-text">Foscar 2026</span>
+  </h1>
+  <img
+    class="hero-trophy hero-trophy--mirror"
+    src="img/statuetta.png"
+    alt=""
+    aria-hidden="true"
+  />
+</div>
 
     <!-- ✏️ MODIFICA: sottotitolo ironico -->
     <p class="hero-subtitle">
